@@ -11,10 +11,11 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: HeroSO_01
-  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject:HeroSo
+  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject.Script:HeroSo
   hero:
-    hp: 0
+    hp: 100
   defenseMechanism:
     weapon: {fileID: 0}
-    attackSpeed: 0
-    defenseMechanismPrefab: {fileID: 0}
+    attackDamage: 5
+    attackSpeed: 1
+    defenseMechanismPrefab: {fileID: 4647182863223883270, guid: 6b554f1654ffd6c478ea0c990f537741, type: 3}

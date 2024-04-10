@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: EnemySO_01
   m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject.Script:EnemySo
   enemy:
-    hp: 0
+    hp: 10
   defenseMechanism:
     weapon: {fileID: 0}
-    attackDamage: 0
-    attackSpeed: 0
-    defenseMechanismPrefab: {fileID: 0}
+    attackDamage: 3
+    attackSpeed: 1
+    defenseMechanismPrefab: {fileID: 5607903817019322461, guid: 807f36a2211dfc2428fa7c48d952539a, type: 3}

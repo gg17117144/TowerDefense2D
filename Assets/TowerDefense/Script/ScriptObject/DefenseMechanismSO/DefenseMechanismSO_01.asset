@@ -11,8 +11,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
   m_Name: DefenseMechanismSO_01
-  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject:DefenseMechanismSo
+  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject.Script:DefenseMechanismSo
   defenseMechanism:
     weapon: {fileID: 0}
-    attackSpeed: 0
-    defenseMechanismPrefab: {fileID: 0}
+    attackDamage: 5
+    attackSpeed: 1
+    defenseMechanismPrefab: {fileID: 8609061784279378839, guid: 316ba45a65b123e4cb309f696e302d70, type: 3}
