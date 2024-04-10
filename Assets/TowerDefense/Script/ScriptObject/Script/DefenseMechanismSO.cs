@@ -1,12 +1,13 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TowerDefense.Script.ScriptObject
+namespace TowerDefense.Script.ScriptObject.Script
 {
     [Serializable]
     public class DefenseMechanism
     {
         public GameObject weapon;
+        public int attackDamage;
         public float attackSpeed;
 
         public GameObject defenseMechanismPrefab;

@@ -4,15 +4,15 @@ using UnityEngine;
 namespace TowerDefense.Script.ScriptObject.Script
 {
     [Serializable]
-    public class Hero
+    public class Enemy
     {
         public int hp;
     }
 
-    [CreateAssetMenu(fileName = "New HeroSO",menuName = "TowerDefense2D/Create HeroSO")]
-    public class HeroSo : ScriptableObject
+    [CreateAssetMenu(fileName = "New EnemySo",menuName = "TowerDefense2D/Create EnemySo")]
+    public class EnemySo : ScriptableObject
     {
-        public Hero hero;
+        public Enemy enemy;
         public DefenseMechanism defenseMechanism;
     }
 }
