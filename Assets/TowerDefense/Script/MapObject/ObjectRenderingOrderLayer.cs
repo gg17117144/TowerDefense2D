@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace TowerDefense.Script.MapObject
 {
-    public class ObjectRenderingLevel : MonoBehaviour
+    public class ObjectRenderingOrderLayer : MonoBehaviour
     {
         private void Start()
         {
