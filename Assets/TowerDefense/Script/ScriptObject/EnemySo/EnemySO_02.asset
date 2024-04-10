@@ -10,9 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: New DefenseMechanismSO
-  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject:DefenseMechanismSo
+  m_Name: EnemySO_02
+  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject.Script:EnemySo
+  enemy:
+    hp: 0
   defenseMechanism:
     weapon: {fileID: 0}
+    attackDamage: 0
     attackSpeed: 0
     defenseMechanismPrefab: {fileID: 0}

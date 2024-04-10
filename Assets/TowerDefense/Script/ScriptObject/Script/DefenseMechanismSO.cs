@@ -13,7 +13,7 @@ namespace TowerDefense.Script.ScriptObject.Script
         public GameObject defenseMechanismPrefab;
     }
 
-    [CreateAssetMenu(fileName = "New DefenseMechanismSO",menuName = "TowerDefense2D/Create DefenseMechanismSO")]
+    [CreateAssetMenu(fileName = "DefenseMechanismSO",menuName = "TowerDefense2D/Create DefenseMechanismSO")]
     public class DefenseMechanismSo : ScriptableObject
     {
         public DefenseMechanism defenseMechanism;

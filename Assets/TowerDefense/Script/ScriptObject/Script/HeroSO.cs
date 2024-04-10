@@ -9,7 +9,7 @@ namespace TowerDefense.Script.ScriptObject.Script
         public int hp;
     }
 
-    [CreateAssetMenu(fileName = "New HeroSO",menuName = "TowerDefense2D/Create HeroSO")]
+    [CreateAssetMenu(fileName = "HeroSO",menuName = "TowerDefense2D/Create HeroSO")]
     public class HeroSo : ScriptableObject
     {
         public Hero hero;
