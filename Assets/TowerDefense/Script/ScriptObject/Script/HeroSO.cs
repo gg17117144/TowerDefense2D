@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace TowerDefense.Script.ScriptObject
+namespace TowerDefense.Script.ScriptObject.Script
 {
     [Serializable]
     public class Hero
@@ -9,7 +9,7 @@ namespace TowerDefense.Script.ScriptObject
         public int hp;
     }
 
-    [CreateAssetMenu(fileName = "New HeroSO",menuName = "TowerDefense2D/Create HeroSO")]
+    [CreateAssetMenu(fileName = "HeroSO",menuName = "TowerDefense2D/Create HeroSO")]
     public class HeroSo : ScriptableObject
     {
         public Hero hero;
