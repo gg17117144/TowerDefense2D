@@ -2,33 +2,33 @@ using TowerDefense.Script.ScriptObject.Script;
 using UnityEditor;
 using UnityEngine;
 
-namespace CharacterAI
+namespace TowerDefense.Script
 {
-    public class CharacterEditor : EditorWindow
+    public class ScriptObjectEditor : EditorWindow
     {
-        private bool HeroSoFoldout = true;
-        private bool EnemySoFoldout = true;
-        private bool defenseSettingsFoldout = true;
-        private Vector2 scrollPosition;
-
-        [MenuItem("WOWWOW/Character Editor")]
+        private bool _heroSoFoldout = true;
+        private bool _enemySoFoldout = true;
+        private bool _defenseSettingsFoldout = true;
+        private Vector2 _scrollPosition;
+        
+        [MenuItem("TowerDefense/ScriptObject Editor")]
         private static void OpenWindow()
         {
-            GetWindow<CharacterEditor>("Character Editor");
+            GetWindow<ScriptObjectEditor>("ScriptObject Editor");
         }
 
         private void OnGUI()
         {
             EditorGUILayout.LabelField("英雄設定", EditorStyles.boldLabel);
-            HeroSoFoldout = EditorGUILayout.Foldout(HeroSoFoldout, "英雄設定");
-            if (HeroSoFoldout)
+            _heroSoFoldout = EditorGUILayout.Foldout(_heroSoFoldout, "英雄設定");
+            if (_heroSoFoldout)
             {
                 DrawScriptableObjectGroup<HeroSo>();
             }
             
             EditorGUILayout.LabelField("敵人設定", EditorStyles.boldLabel);
-            EnemySoFoldout = EditorGUILayout.Foldout(EnemySoFoldout, "敵人設定");
-            if (EnemySoFoldout)
+            _enemySoFoldout = EditorGUILayout.Foldout(_enemySoFoldout, "敵人設定");
+            if (_enemySoFoldout)
             {
                 DrawScriptableObjectGroup<EnemySo>();
             }
@@ -36,8 +36,8 @@ namespace CharacterAI
             EditorGUILayout.Space();
 
             EditorGUILayout.LabelField("防禦機制設定", EditorStyles.boldLabel);
-            defenseSettingsFoldout = EditorGUILayout.Foldout(defenseSettingsFoldout, "防禦機制設定");
-            if (defenseSettingsFoldout)
+            _defenseSettingsFoldout = EditorGUILayout.Foldout(_defenseSettingsFoldout, "防禦機制設定");
+            if (_defenseSettingsFoldout)
             {
                 DrawScriptableObjectGroup<DefenseMechanismSo>();
             }
@@ -65,26 +65,13 @@ namespace CharacterAI
         
         private void DrawScriptableObjectGroup<T>() where T : ScriptableObject
         {
+            _scrollPosition = EditorGUILayout.BeginScrollView(_scrollPosition);
             var settings = Resources.LoadAll<T>("");
             foreach (var setting in settings)
             {
-                EditorGUILayout.BeginVertical(GUI.skin.box);
-                EditorGUI.indentLevel++;
-
-                // Display foldout for each ScriptableObject with its name
-                EditorGUILayout.BeginHorizontal();
-                bool foldout = EditorGUILayout.Foldout(true, setting.name);
-                EditorGUILayout.EndHorizontal();
-
-                // If foldout is true, draw the setting
-                if (foldout)
-                {
-                    DrawSetting(setting);
-                }
-
-                EditorGUI.indentLevel--;
-                EditorGUILayout.EndVertical();
+                DrawSetting(setting);
             }
+            EditorGUILayout.EndScrollView();
         }
 
 
