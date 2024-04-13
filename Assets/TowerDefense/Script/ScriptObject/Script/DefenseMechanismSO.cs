@@ -17,5 +17,6 @@ namespace TowerDefense.Script.ScriptObject.Script
     public class DefenseMechanismSo : ScriptableObject
     {
         public DefenseMechanism defenseMechanism;
+        public bool foldout = true; // 新增 foldout 屬性，用於追踪折疊區域的狀態
     }
 }
