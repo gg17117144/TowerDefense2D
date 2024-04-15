@@ -1,10 +1,19 @@
+using System;
 using UnityEngine;
 
 namespace TowerDefense.Script.MapObject
 {
     public class ObjectRenderingOrderLayer : MonoBehaviour
     {
+        
+        private SpriteRenderer _spriteRenderer;
         private void Start()
+        {
+            // SetSortingLayer();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
+        private void Update()
         {
             SetSortingLayer();
         }
@@ -12,7 +21,7 @@ namespace TowerDefense.Script.MapObject
         void SetSortingLayer()
         {
             var positionY = Mathf.RoundToInt(transform.position.y);
-            var spriteRenderer = GetComponent<SpriteRenderer>();
+            var spriteRenderer = _spriteRenderer;
             spriteRenderer.sortingLayerName = "Default";
             spriteRenderer.sortingOrder = 0 - positionY;
         }
