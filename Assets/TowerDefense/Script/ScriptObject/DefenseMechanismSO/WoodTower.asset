@@ -9,11 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: DefenseMechanismSO_01
-  m_EditorClassIdentifier: Assembly-CSharp:TowerDefense.Script.ScriptObject.Script:DefenseMechanismSo
-  defenseMechanism:
-    weapon: {fileID: 1579941462846369181, guid: c9bbfdcda886bc745a321ebd1605205a, type: 3}
-    attackDamage: 5
+  m_Script: {fileID: 11500000, guid: 85576eddb66244fcad6a76416ed8d11b, type: 3}
+  m_Name: WoodTower
+  m_EditorClassIdentifier: 
+  defenseMechanismSetting:
+    weaponSo: {fileID: 11400000, guid: 277991200d3d25748bcb89af288e2a49, type: 2}
     attackSpeed: 1
     defenseMechanismPrefab: {fileID: 8609061784279378839, guid: 316ba45a65b123e4cb309f696e302d70, type: 3}
+  foldout: 1

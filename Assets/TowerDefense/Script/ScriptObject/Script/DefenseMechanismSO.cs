@@ -4,19 +4,18 @@ using UnityEngine;
 namespace TowerDefense.Script.ScriptObject.Script
 {
     [Serializable]
-    public class DefenseMechanism
+    public class DefenseMechanismSetting
     {
-        public GameObject weapon;
-        public int attackDamage;
+        public WeaponSo weaponSo;
         public float attackSpeed;
 
         public GameObject defenseMechanismPrefab;
     }
 
-    [CreateAssetMenu(fileName = "DefenseMechanismSO",menuName = "TowerDefense2D/Create DefenseMechanismSO")]
+    [CreateAssetMenu(fileName = "DefenseMechanismSO", menuName = "TowerDefense2D/Create DefenseMechanismSO")]
     public class DefenseMechanismSo : ScriptableObject
     {
-        public DefenseMechanism defenseMechanism;
+        public DefenseMechanismSetting defenseMechanismSetting;
         public bool foldout = true; // 新增 foldout 屬性，用於追踪折疊區域的狀態
     }
 }
