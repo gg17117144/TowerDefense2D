@@ -12,10 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7720056c3175b724e9973d79e08a7ee5, type: 3}
   m_Name: Pirate_02
   m_EditorClassIdentifier: 
-  enemySetting:
-    hp: 10
-    moveSpeed: 0.005
-    attackSpeed: 0
-    enemyType: Saber
-    weapon: {fileID: 0}
-    enemyPrefab: {fileID: 8698465908400393845, guid: ee24400917bec564e9baf72df92b03af, type: 3}
+  hp: 100
+  moveSpeed: 0.005
+  attackSpeed: 0
+  weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
+  enemyPrefab: {fileID: 8698465908400393845, guid: ee24400917bec564e9baf72df92b03af, type: 3}

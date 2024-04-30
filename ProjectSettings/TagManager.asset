@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Hero
   - Enemy
+  - EnemyPool
+  - WeaponPool
   layers:
   - Default
   - TransparentFX

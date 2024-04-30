@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Arrow
   m_EditorClassIdentifier: 
   weaponSetting:
-    damage: 1
-    speed: 1
+    damage: 10
+    speed: 5
     prefab: {fileID: 1579941462846369181, guid: c9bbfdcda886bc745a321ebd1605205a, type: 3}

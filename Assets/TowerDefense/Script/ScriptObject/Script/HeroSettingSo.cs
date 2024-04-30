@@ -13,8 +13,8 @@ namespace TowerDefense.Script.ScriptObject.Script
         public GameObject heroPrefab;
     }
 
-    [CreateAssetMenu(fileName = "HeroSO", menuName = "TowerDefense2D/Create HeroSO")]
-    public class HeroSo : ScriptableObject
+    [CreateAssetMenu(fileName = "HeroSettingSo", menuName = "TowerDefense2D/Create HeroSO")]
+    public class HeroSettingSo : ScriptableObject
     {
         public HeroSetting heroSetting;
     }

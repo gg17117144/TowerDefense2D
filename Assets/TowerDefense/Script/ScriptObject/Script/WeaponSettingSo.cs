@@ -12,8 +12,8 @@ namespace TowerDefense.Script.ScriptObject.Script
         public GameObject prefab;
     }
 
-    [CreateAssetMenu(fileName = "WeaponSo", menuName = "TowerDefense2D/Create WeaponSo")]
-    public class WeaponSo : ScriptableObject
+    [CreateAssetMenu(fileName = "WeaponSettingSo", menuName = "TowerDefense2D/Create WeaponSo")]
+    public class WeaponSettingSo : ScriptableObject
     {
         public WeaponSetting weaponSetting;
     }
