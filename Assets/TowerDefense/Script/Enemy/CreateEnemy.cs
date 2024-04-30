@@ -26,7 +26,7 @@ namespace TowerDefense.Script.Enemy
             var randomNum = Random.Range(0, enemySoList.Count);
             var enemyInstantiate = Instantiate(enemySoList[randomNum].enemyPrefab, pos,
                 Quaternion.identity, enemyPool.transform);
-            enemyInstantiate.GetComponentInChildren<EnemyController>().enemySettingData = enemySoList[randomNum];
+            enemyInstantiate.GetComponentInChildren<EnemyController>().Initialize(enemySoList[randomNum]);
         }
     }
 }

@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Reflection;
 using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
@@ -28,6 +29,14 @@ namespace TowerDefense.Script.DefenseMechanism
             {
                 Defense(enemyList[0]);
                 _stopTime = 0;
+            }
+
+            for (int i = 0; i < enemyList.Count; i++)
+            {
+                if (enemyList[i] == null)
+                {
+                    enemyList.Remove(enemyList[i]);
+                }
             }
         }
 

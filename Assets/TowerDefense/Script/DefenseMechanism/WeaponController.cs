@@ -1,6 +1,7 @@
 using System;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace TowerDefense.Script.DefenseMechanism
 {
@@ -8,21 +9,17 @@ namespace TowerDefense.Script.DefenseMechanism
     {
         [SerializeField] private WeaponSettingSo setting;
         [SerializeField] private Transform target;
-
-        [SerializeField] private Vector3 moveDirection;
         [SerializeField] private float speed;
-        [SerializeField] private bool isShot = false;
 
+        [SerializeField] public int DamageAmount => damageAmount;
+        [SerializeField] private int damageAmount;
+        
         public void Initialize(WeaponSettingSo weaponSo, Transform targetTransform)
         {
             setting = weaponSo;
             target = targetTransform;
             speed = setting.weaponSetting.speed;
-        }
-
-        private void Start()
-        {
-            moveDirection = new Vector3(speed * Time.deltaTime, 0, 0);
+            damageAmount = setting.weaponSetting.damage;
         }
 
         private void Update()
@@ -46,31 +43,33 @@ namespace TowerDefense.Script.DefenseMechanism
         private void ShotWeapon()
         {
             Invoke(nameof(DestroyObject), 5f);
-            moveDirection = new Vector3(setting.weaponSetting.speed * Time.deltaTime, 0, 0);
-            isShot = true;
         }
 
         void ChaseEnemy()
         {
             // TODO 往敵人的方向前進
-            if (!ReferenceEquals(target, null))
+            try
             {
+                if (!ReferenceEquals(target, null))
+                {
+                    // 計算距離
+                    Vector3 thisPosition = transform.position;
+                    Vector3 targetPosition = target.transform.position + new Vector3(0,0.7f,0);
+                    Debug.DrawLine(thisPosition,targetPosition,Color.red);
+                    // 計算怪物要移動的方向
+                    Vector3 moveDirection = (targetPosition - thisPosition).normalized;
 
-                // 計算距離
-                Vector3 thisPosition = transform.position;
-                Vector3 targetPosition = target.transform.position + new Vector3(0,0.7f,0);
-                Debug.DrawLine(thisPosition,targetPosition,Color.red);
-                // 計算怪物要移動的方向
-                Vector3 moveDirection = (targetPosition - thisPosition).normalized;
-
-                // 计算旋转角度
-                float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
-
-                // 设置旋转
-                transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-                // 移動怪物
-                transform.position =
-                    Vector3.MoveTowards(thisPosition, thisPosition + moveDirection, speed * Time.deltaTime);
+                    // 旋轉
+                    float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
+                    transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+                    // 移動
+                    transform.position =
+                        Vector3.MoveTowards(thisPosition, thisPosition + moveDirection, speed * Time.deltaTime);
+                }
+            }
+            catch (Exception e)
+            {
+                DestroyObject();
             }
         }
 
