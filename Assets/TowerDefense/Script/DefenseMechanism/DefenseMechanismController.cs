@@ -25,7 +25,7 @@ namespace TowerDefense.Script.DefenseMechanism
         private void Update()
         {
             _stopTime += Time.deltaTime;
-            if (enemyList.Count >= 1 && _stopTime >= 1f)
+            if (enemyList.Count >= 1 && _stopTime >= 1 - setting.defenseMechanismSetting.attackSpeed * 0.01)
             {
                 Defense(enemyList[0]);
                 _stopTime = 0;

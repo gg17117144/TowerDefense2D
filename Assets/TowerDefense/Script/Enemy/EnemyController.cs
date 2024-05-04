@@ -91,7 +91,7 @@ namespace TowerDefense.Script.Enemy
         private void DestroyObject()
         {
             //TODO 需要更改成物件池的作法
-            Destroy(gameObject);
+            Destroy(transform.parent.gameObject);
         }
     }
 }

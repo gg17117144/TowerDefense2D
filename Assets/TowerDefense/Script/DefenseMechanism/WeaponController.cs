@@ -67,7 +67,7 @@ namespace TowerDefense.Script.DefenseMechanism
                         Vector3.MoveTowards(thisPosition, thisPosition + moveDirection, speed * Time.deltaTime);
                 }
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 DestroyObject();
             }
