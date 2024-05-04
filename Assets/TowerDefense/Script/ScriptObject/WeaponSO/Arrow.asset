@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponSetting:
     damage: 10
-    speed: 5
+    speed: 10
     prefab: {fileID: 1579941462846369181, guid: c9bbfdcda886bc745a321ebd1605205a, type: 3}

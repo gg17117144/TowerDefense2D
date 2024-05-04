@@ -16,4 +16,4 @@ MonoBehaviour:
   moveSpeed: 0.005
   attackSpeed: 0
   weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
-  enemyPrefab: {fileID: 8698465908400393845, guid: ee24400917bec564e9baf72df92b03af, type: 3}
+  enemyPrefab: {fileID: 2505982368892492678, guid: ee24400917bec564e9baf72df92b03af, type: 3}
