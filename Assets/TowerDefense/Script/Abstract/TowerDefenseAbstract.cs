@@ -2,6 +2,7 @@ using UnityEngine.Events;
 
 namespace TowerDefense.Script
 {
+    
     public abstract class Hp : UnityEvent<int>
     {
     }
