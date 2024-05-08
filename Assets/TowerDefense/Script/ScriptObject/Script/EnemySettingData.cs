@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
-using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TowerDefense.Script.ScriptObject.Script
 {
@@ -12,11 +8,14 @@ namespace TowerDefense.Script.ScriptObject.Script
         [Header("數值")] public int hp;
         public float moveSpeed;
         public float attackSpeed;
-        
+        public int bounty;
+        public int loot;
+
         [SerializeField]
         public enum EnemyTypes
         {
-            Saber,Archer
+            Saber,
+            Archer
         }
 
         [Header("物件")] public GameObject weapon;
