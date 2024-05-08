@@ -25,7 +25,6 @@ namespace TowerDefense.Script.UI
         {
             hpBar.DOKill();
             //TODO鑰更改最大血量
-            Debug.Log($"value:{value}");
             hpBar.DOFillAmount(value, 0.5f);
         }
 

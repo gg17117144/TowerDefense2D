@@ -12,8 +12,8 @@ namespace TowerDefense.Script.UI
 
         private void Initialize()
         {
-            ChangeCoinTextValue(GameDataSetting.money);
-            ChangeLootTextValue(GameDataSetting.loop);
+            ChangeCoinTextValue(GameDataSetting.Money);
+            ChangeLootTextValue(GameDataSetting.Loop);
 
             MoneyEventCenter.AddListener(MoneyEventType.AddMoney, ChangeCoinTextValue);
             MoneyEventCenter.AddListener(MoneyEventType.AddLoop, ChangeLootTextValue);

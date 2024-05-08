@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TowerDefense.Script.EventCenter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,6 +12,8 @@ namespace TowerDefense.Script.UI
         private void Initialize()
         {
             ChangeExperienceBarValue(0);
+            
+            ExperienceEventCenter.AddListener(ExperienceEventType.UpdataExperience,ChangeExperienceBarValue);
         }
 
         private void Start()
