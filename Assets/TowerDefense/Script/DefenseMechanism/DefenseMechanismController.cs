@@ -1,17 +1,14 @@
 using System.Collections.Generic;
-using System.Reflection;
-using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TowerDefense.Script.DefenseMechanism
 {
     public class DefenseMechanismController : MonoBehaviour
     {
-        [SerializeField] private DefenseMechanismSettingSo setting;
-        private Transform _weaponPool;
+        [SerializeField] private DefenseMechanismSettingSo defenseMechanismSetting;
         [SerializeField] private List<Transform> enemyList = new List<Transform>();
+        private Transform _weaponPool;
         private float _stopTime = 0;
 
         [SerializeField] private Transform shootTransform;
@@ -25,7 +22,8 @@ namespace TowerDefense.Script.DefenseMechanism
         private void Update()
         {
             _stopTime += Time.deltaTime;
-            if (enemyList.Count >= 1 && _stopTime >= 1 - setting.defenseMechanismSetting.attackSpeed * 0.01)
+            if (enemyList.Count >= 1 &&
+                _stopTime >= 1 - defenseMechanismSetting.defenseMechanismSetting.attackSpeed * 0.01)
             {
                 Defense(enemyList[0]);
                 _stopTime = 0;
@@ -55,7 +53,7 @@ namespace TowerDefense.Script.DefenseMechanism
 
         private void Track(Transform target)
         {
-            var weaponSo = setting.defenseMechanismSetting.weaponSettingSo;
+            var weaponSo = defenseMechanismSetting.defenseMechanismSetting.weaponSettingSo;
             var shootTransformPosition = shootTransform.position;
 
             var weaponSettingPrefab = weaponSo.weaponSetting.prefab;
@@ -63,22 +61,6 @@ namespace TowerDefense.Script.DefenseMechanism
                 Quaternion.identity, _weaponPool);
             WeaponController weaponController = weaponInstantiate.AddComponent<WeaponController>();
             weaponController.Initialize(weaponSo, target);
-        }
-
-        private void notrack(Transform target)
-        {
-            // 計算生成武器的方向，使其朝向目標
-            Vector2 direction = target.position - transform.position;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            var quaternion = Quaternion.Euler(0, 0, angle);
-
-            var weaponSo = setting.defenseMechanismSetting.weaponSettingSo;
-            var shootTransformPosition = shootTransform.position;
-
-            var weaponSettingPrefab = weaponSo.weaponSetting.prefab;
-            var weaponInstantiate = Instantiate(weaponSettingPrefab, shootTransformPosition,
-                Quaternion.identity, _weaponPool);
-            weaponInstantiate.transform.rotation = quaternion;
         }
     }
 }
