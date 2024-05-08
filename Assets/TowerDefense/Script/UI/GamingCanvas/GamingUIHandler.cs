@@ -1,3 +1,4 @@
+using System;
 using NaughtyAttributes;
 using UnityEngine;
 
@@ -16,5 +17,6 @@ namespace TowerDefense.Script.UI
 
         public ExperienceUIController ExperienceUIController => experienceUIController;
         [SerializeField] [Required] private ExperienceUIController experienceUIController;
+        
     }
 }
