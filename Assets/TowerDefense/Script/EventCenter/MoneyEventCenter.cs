@@ -11,7 +11,7 @@ namespace TowerDefense.Script.EventCenter
 
     public class MoneyEventCenter
     {
-        private static readonly Dictionary<MoneyEventType, Action<int>> m_EventDict =
+        private static readonly Dictionary<MoneyEventType, Action<int>> MoneyEventDict =
             new Dictionary<MoneyEventType, Action<int>>();
 
         /// <summary>
@@ -19,12 +19,12 @@ namespace TowerDefense.Script.EventCenter
         /// </summary>
         public static void AddListener(MoneyEventType eventType, Action<int> callback)
         {
-            if (!m_EventDict.ContainsKey(eventType))
+            if (!MoneyEventDict.ContainsKey(eventType))
             {
-                m_EventDict.Add(eventType, null);
+                MoneyEventDict.Add(eventType, null);
             }
 
-            m_EventDict[eventType] += callback;
+            MoneyEventDict[eventType] += callback;
         }
 
         /// <summary>
@@ -32,13 +32,13 @@ namespace TowerDefense.Script.EventCenter
         /// </summary>
         public static void RemoveListener(MoneyEventType eventType, Action<int> callback)
         {
-            if (!m_EventDict.ContainsKey(eventType))
+            if (!MoneyEventDict.ContainsKey(eventType))
                 return;
 
-            if (m_EventDict[eventType] == null)
+            if (MoneyEventDict[eventType] == null)
                 return;
 
-            m_EventDict[eventType] -= callback;
+            MoneyEventDict[eventType] -= callback;
         }
 
         /// <summary>
@@ -46,10 +46,10 @@ namespace TowerDefense.Script.EventCenter
         /// </summary>
         public static void Broadcast(MoneyEventType eventType, int data)
         {
-            if (!m_EventDict.ContainsKey(eventType))
+            if (!MoneyEventDict.ContainsKey(eventType))
                 return;
 
-            Action<int> callback = m_EventDict[eventType];
+            Action<int> callback = MoneyEventDict[eventType];
 
             if (callback != null)
             {
@@ -59,7 +59,7 @@ namespace TowerDefense.Script.EventCenter
 
         public static void CleanAllEvent()
         {
-            m_EventDict.Clear();
+            MoneyEventDict.Clear();
         }
     }
 }

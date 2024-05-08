@@ -1,9 +1,9 @@
-using System;
+using System.Collections;
 using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
+using TowerDefense.Script.EventCenter;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityHFSM;
 
 namespace TowerDefense.Script.Enemy
@@ -11,20 +11,19 @@ namespace TowerDefense.Script.Enemy
     public class EnemyController : MonoBehaviour
     {
         public EnemySettingData enemySettingData;
-        
+
         private StateMachine _fsm;
         private Transform _heroTransform;
         private Animator _animator;
-        
-        [Header("數值")] 
-        [SerializeField] private int _hp;
+
+        [Header("數值")] [SerializeField] private int _hp;
 
         public void Initialize(EnemySettingData enemySo)
         {
             enemySettingData = enemySo;
             _hp = enemySettingData.hp;
         }
-        
+
         // Start is called before the first frame update
         void Start()
         {
@@ -72,14 +71,18 @@ namespace TowerDefense.Script.Enemy
         private void DamageTaken(int damageAmount)
         {
             _hp -= damageAmount;
+            DamageEffect();
             // Debug.Log($"怪物:{gameObject.name}受了{damageAmount}點傷害，目前血量剩餘{_hp}");
             //TODO 需要跳出UI字樣
             if (_hp <= 0)
             {
+                // TODO 需要更換物件池
                 DestroyObject();
+                MoneyEventMediator.MoneyEnemyDeathNotify(enemySettingData.bounty,enemySettingData.loot);
+                ExperienceEventMediator.ExperienceEnemyDeathNotify(10);
             }
         }
-        
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag($"Weapon"))
@@ -92,6 +95,18 @@ namespace TowerDefense.Script.Enemy
         {
             //TODO 需要更改成物件池的作法
             Destroy(transform.parent.gameObject);
+        }
+
+        private void DamageEffect()
+        {
+            StartCoroutine(nameof(StartDamageEffect));
+        }
+
+        IEnumerator StartDamageEffect()
+        {
+            transform.GetComponent<SpriteRenderer>().color = Color.red;
+            yield return new WaitForSeconds(0.1f);
+            transform.GetComponent<SpriteRenderer>().color = Color.white;
         }
     }
 }
