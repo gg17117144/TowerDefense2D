@@ -17,5 +17,6 @@ namespace TowerDefense.Script.ScriptObject.Script
     public class HeroSettingSo : ScriptableObject
     {
         public HeroSetting heroSetting;
+        public DefenseMechanismSetting defenseMechanismSetting;
     }
 }

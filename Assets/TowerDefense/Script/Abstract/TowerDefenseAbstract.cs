@@ -1,8 +1,7 @@
 using UnityEngine.Events;
 
-namespace TowerDefense.Script
+namespace TowerDefense.Script.Abstract
 {
-    
     public abstract class Hp : UnityEvent<int>
     {
     }
@@ -11,11 +10,15 @@ namespace TowerDefense.Script
     {
     }
 
-    public abstract class PremiumMoney : UnityEvent<int>
+    public abstract class Loop : UnityEvent<int>
     {
     }
 
-    public abstract class Progress : UnityEvent<int, int>
+    public abstract class Progress : UnityEvent<int, float>
+    {
+    }
+
+    public abstract class Experience : UnityEvent<float>
     {
     }
 }

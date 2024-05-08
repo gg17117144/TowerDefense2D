@@ -7,7 +7,7 @@ namespace TowerDefense.Script.ScriptObject.Script
     [Serializable]
     public class DefenseMechanismSetting
     {
-        [FormerlySerializedAs("weaponSo")] public WeaponSettingSo weaponSettingSo;
+        public WeaponSettingSo weaponSettingSo;
         public float attackSpeed;
 
         public GameObject defenseMechanismPrefab;

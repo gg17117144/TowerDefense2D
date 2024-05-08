@@ -3,6 +3,11 @@ using UnityEngine;
 
 namespace TowerDefense.Script.ScriptObject.Script
 {
+    public enum WeaponType
+    {
+        Rotate,NotRotate
+    }
+    
     [Serializable]
     public class WeaponSetting
     {
@@ -10,6 +15,8 @@ namespace TowerDefense.Script.ScriptObject.Script
         public float speed;
 
         public GameObject prefab;
+
+        public WeaponType weaponType;
     }
 
     [CreateAssetMenu(fileName = "WeaponSettingSo", menuName = "TowerDefense2D/Create WeaponSo")]
