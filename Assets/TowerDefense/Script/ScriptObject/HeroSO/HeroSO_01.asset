@@ -17,3 +17,7 @@ MonoBehaviour:
     weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
     attackSpeed: 1
     heroPrefab: {fileID: 4647182863223883270, guid: 6b554f1654ffd6c478ea0c990f537741, type: 3}
+  defenseMechanismSetting:
+    weaponSettingSo: {fileID: 11400000, guid: 3b6cd106752bd794790bb3f1a20b6c7c, type: 2}
+    attackSpeed: 50
+    defenseMechanismPrefab: {fileID: 4647182863223883270, guid: 6b554f1654ffd6c478ea0c990f537741, type: 3}
