@@ -12,3 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9a18fca6832a04e8bc2730c0f4771d, type: 3}
   m_Name: GameDataSettingSo
   m_EditorClassIdentifier: 
+  hp: 0
+  money: 205
+  loot: 13
+  progress: 0
+  maxExperience: 400
+  experience: 160

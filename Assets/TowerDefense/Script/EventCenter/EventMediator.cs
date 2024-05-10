@@ -8,6 +8,13 @@ namespace TowerDefense.Script.EventCenter
         {
             OnEnemyDeathGetMoney?.Invoke(bounty, loopIncrement);
         }
+        
+        public static event System.Action<int> OnDoGachaConsumeLoot;
+
+        public static void DoGachaConsumeLoot(int loot)
+        {
+            OnDoGachaConsumeLoot?.Invoke(loot);
+        }
     }
     
     public class ExperienceEventMediator

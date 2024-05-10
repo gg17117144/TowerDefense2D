@@ -6,7 +6,7 @@ namespace TowerDefense.Script.EventCenter
     public enum MoneyEventType
     {
         AddMoney,
-        AddLoop,
+        AddLoot,
     }
 
     public class MoneyEventCenter
