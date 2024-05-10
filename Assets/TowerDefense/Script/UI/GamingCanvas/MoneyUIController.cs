@@ -3,7 +3,7 @@ using TowerDefense.Script.EventCenter;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
-namespace TowerDefense.Script.UI
+namespace TowerDefense.Script.UI.GamingCanvas
 {
     public class MoneyUIController : MonoBehaviour
     {
@@ -12,11 +12,11 @@ namespace TowerDefense.Script.UI
 
         private void Initialize()
         {
-            ChangeCoinTextValue(GameDataSetting.Money);
-            ChangeLootTextValue(GameDataSetting.Loop);
+            ChangeCoinTextValue(0);
+            ChangeLootTextValue(0);
 
             MoneyEventCenter.AddListener(MoneyEventType.AddMoney, ChangeCoinTextValue);
-            MoneyEventCenter.AddListener(MoneyEventType.AddLoop, ChangeLootTextValue);
+            MoneyEventCenter.AddListener(MoneyEventType.AddLoot, ChangeLootTextValue);
         }
 
         private void Start()

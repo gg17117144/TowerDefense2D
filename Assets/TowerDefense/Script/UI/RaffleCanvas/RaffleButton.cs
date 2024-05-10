@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using NaughtyAttributes;
+using TowerDefense.Script.EventCenter;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -29,9 +30,51 @@ namespace TowerDefense.Script.UI.RaffleCanvas
 
         void SetButtonFunction()
         {
+            singleSummonButton.onClick.AddListener(DoGacha1Time);
+            bulkSummonButton.onClick.AddListener(DoGacha10Time);
+            trustYouSelfButton.onClick.AddListener(DoGachaTrustYouSelf);
             backButton.onClick.AddListener(CloseTheRaffleCanvas);
         }
-
+        
+        void DoGacha1Time()
+        {
+            if (GameData.Instance.gamingData.loot >= 100)
+            {
+                Debug.Log($"扭蛋一次");
+                MoneyEventMediator.DoGachaConsumeLoot(-100);
+            }
+            else
+            {
+                Debug.Log($"Loot不夠");
+            }
+        }
+        
+        void DoGacha10Time()
+        {
+            if (GameData.Instance.gamingData.loot >= 1000)
+            {
+                Debug.Log($"扭蛋十次");
+                MoneyEventMediator.DoGachaConsumeLoot(-1000);
+            }
+            else
+            {
+                Debug.Log($"Loot不夠");
+            }
+        }
+        
+        void DoGachaTrustYouSelf()
+        {
+            if (GameData.Instance.gamingData.loot >= 100)
+            {
+                Debug.Log($"扭蛋相信自己一次");
+                MoneyEventMediator.DoGachaConsumeLoot(-100);
+            }
+            else
+            {
+                Debug.Log($"Loot不夠");
+            }
+        }
+        
         [Button]
         void CloseTheRaffleCanvas()
         {

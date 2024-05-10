@@ -20,8 +20,7 @@ namespace TowerDefense.Script.UI
         {
             Initialize();
         }
-
-
+        
         public void ChangeExperienceBarValue(float value)
         {
             experienceBar.DOKill();
