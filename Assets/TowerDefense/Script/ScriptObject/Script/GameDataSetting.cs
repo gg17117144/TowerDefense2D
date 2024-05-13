@@ -1,18 +1,22 @@
+using System.Collections.Generic;
+using NaughtyAttributes;
 using TowerDefense.Script.EventCenter;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace TowerDefense.Script.ScriptObject.Script
 {
     [CreateAssetMenu(fileName = "GameDataSettingSo", menuName = "TowerDefense2D/Create GameDataSO")]
     public class GameDataSetting : ScriptableObject
     {
-        [SerializeField] public int hp;
-        [SerializeField] public int money;
-        [SerializeField] public int loot;
-        [SerializeField] public int progress;
-        [SerializeField] public int maxExperience = 400; //todo 暫時給他
-        [SerializeField] public int experience;
+        [BoxGroup("數值")] [SerializeField] public int hp;
+        [BoxGroup("數值")] [SerializeField] public int money;
+        [BoxGroup("數值")] [SerializeField] public int loot;
+        [BoxGroup("數值")] [SerializeField] public int progress;
+        [BoxGroup("數值")] [SerializeField] public int maxExperience = 400; //todo 暫時給他
+        [BoxGroup("數值")] [SerializeField] public int experience;
+
+        //TODO 需要補充武器數量
+        [BoxGroup("背包資料")] [SerializeField] public List<string> bagWeaponData;
 
         private void OnEnable()
         {
@@ -20,13 +24,16 @@ namespace TowerDefense.Script.ScriptObject.Script
             MoneyEventMediator.OnEnemyDeathGetMoney += UpdateMoneyValuesOnEnemyDeathGetMoney;
             MoneyEventMediator.OnDoGachaConsumeLoot += UpdateMoneyValuesOnDoGachaConsumeLoot;
             ExperienceEventMediator.OnEnemyDeathGetExperience += UpdateExperienceValuesOnEnemyDeathGetMoney;
+            WeaponEventMediator.OnGachaGetWeapon += UpdatebagWeaponDataOnDoGachaGetWeapon;
         }
 
         private void OnDisable()
         {
             // 在GameDataSetting禁用時取消訂閱事件，以避免內存洩漏
             MoneyEventMediator.OnEnemyDeathGetMoney -= UpdateMoneyValuesOnEnemyDeathGetMoney;
+            MoneyEventMediator.OnDoGachaConsumeLoot -= UpdateMoneyValuesOnDoGachaConsumeLoot;
             ExperienceEventMediator.OnEnemyDeathGetExperience -= UpdateExperienceValuesOnEnemyDeathGetMoney;
+            WeaponEventMediator.OnGachaGetWeapon -= UpdatebagWeaponDataOnDoGachaGetWeapon;
         }
 
         private void UpdateMoneyValuesOnEnemyDeathGetMoney(int bounty, int loopIncrement)
@@ -38,12 +45,12 @@ namespace TowerDefense.Script.ScriptObject.Script
             MoneyEventCenter.Broadcast(MoneyEventType.AddMoney, money);
             MoneyEventCenter.Broadcast(MoneyEventType.AddLoot, loot);
         }
-        
+
         private void UpdateMoneyValuesOnDoGachaConsumeLoot(int lootIncrement)
         {
-            // 更新搶茄數值
+            // 更新掉落物數值
             loot += lootIncrement;
-            
+
             MoneyEventCenter.Broadcast(MoneyEventType.AddLoot, loot);
         }
 
@@ -53,6 +60,22 @@ namespace TowerDefense.Script.ScriptObject.Script
             this.experience += experience;
             var experienceValue = this.experience / (float)maxExperience;
             ExperienceEventCenter.Broadcast(ExperienceEventType.UpdataExperience, experienceValue);
+        }
+
+        private void UpdatebagWeaponDataOnDoGachaGetWeapon(string weaponName)
+        {
+            // 更新武器數量
+            foreach (var weapon in bagWeaponData)
+            {
+                if (weapon == weaponName)
+                {
+                    return;
+                }
+            }
+
+            bagWeaponData.Add(weaponName);
+
+            WeaponEventCenter.Broadcast(WeaponEventType.UpdataWeaponData, weaponName);
         }
     }
 }

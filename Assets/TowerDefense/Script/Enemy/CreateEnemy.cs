@@ -1,7 +1,6 @@
 using System.Collections.Generic;
 using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefense.Script.Enemy
@@ -10,9 +9,16 @@ namespace TowerDefense.Script.Enemy
     {
         [SerializeField] private List<EnemySettingData> enemySoList;
 
-        private void Start()
+        [Button]
+        public void StartCreate()
         {
             InvokeRepeating(nameof(Create), 0, 3f);
+        }
+        
+        [Button]
+        public void StopCreate()
+        {
+            CancelInvoke(nameof(Create));
         }
 
         [Button]

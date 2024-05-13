@@ -15,6 +15,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         [SerializeField] private Button trustYouSelfButton;
         [SerializeField] private Button backButton;
 
+        [SerializeField] private RaffleDataController raffleDataController;
         private void Start()
         {
             StartLoopAnimation();
@@ -38,10 +39,11 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGacha1Time()
         {
-            if (GameData.Instance.gamingData.loot >= 100)
+            if (GameData.instance.gamingData.loot >= 100)
             {
                 Debug.Log($"扭蛋一次");
                 MoneyEventMediator.DoGachaConsumeLoot(-100);
+                raffleDataController.DoGacha1Time();
             }
             else
             {
@@ -51,10 +53,11 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGacha10Time()
         {
-            if (GameData.Instance.gamingData.loot >= 1000)
+            if (GameData.instance.gamingData.loot >= 1000)
             {
                 Debug.Log($"扭蛋十次");
                 MoneyEventMediator.DoGachaConsumeLoot(-1000);
+                raffleDataController.DoGacha10Time();
             }
             else
             {
@@ -64,10 +67,11 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGachaTrustYouSelf()
         {
-            if (GameData.Instance.gamingData.loot >= 100)
+            if (GameData.instance.gamingData.loot >= 100)
             {
                 Debug.Log($"扭蛋相信自己一次");
                 MoneyEventMediator.DoGachaConsumeLoot(-100);
+                raffleDataController.DoGacha1Time();
             }
             else
             {

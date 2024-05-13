@@ -1,9 +1,6 @@
-using System;
-using DG.Tweening;
 using NaughtyAttributes;
 using TowerDefense.Script.UI.RaffleCanvas;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace TowerDefense.Script.UI.GamingCanvas
@@ -16,15 +13,18 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [SerializeField] private Button settingButton;
         [SerializeField] private Button weaponButton;
 
-        [FormerlySerializedAs("raffleUIHandler")] [SerializeField] private RaffleUIController raffleUIController;
+        [SerializeField] private RaffleUIController raffleUIController;
+        [SerializeField] private WeaponBagController weaponBagController;
+
         private void Initialize()
         {
-            enemyMenuButton.onClick.AddListener(OpenEnemyMenu);
-            gachaButton.onClick.AddListener(OpenGacha);
             taskMenuButton.onClick.AddListener(OpenTaskMenu);
-            settingButton.onClick.AddListener(OpenSetting);
             weaponButton.onClick.AddListener(OpenWeapon);
+            gachaButton.onClick.AddListener(OpenGacha);
+            enemyMenuButton.onClick.AddListener(OpenEnemyMenu);
+            settingButton.onClick.AddListener(OpenSetting);
         }
+
         private void Start()
         {
             Initialize();
@@ -32,29 +32,25 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void OpenEnemyMenu()
         {
-
         }
-        
+
         [Button]
         private void OpenGacha()
         {
             raffleUIController.OpenRaffleUI();
         }
-        
+
         private void OpenTaskMenu()
         {
-            
         }
-        
+
         private void OpenSetting()
         {
-            
         }
-        
+
         private void OpenWeapon()
         {
-            
+            weaponBagController.OpenWeaponBag();
         }
-        
     }
 }

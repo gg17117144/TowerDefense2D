@@ -26,4 +26,14 @@ namespace TowerDefense.Script.EventCenter
             OnEnemyDeathGetExperience?.Invoke(Experience);
         }
     }
+    
+    public class WeaponEventMediator
+    {
+        public static event System.Action<string> OnGachaGetWeapon;
+
+        public static void DoGachaGetWeapon(string weaponName)
+        {
+            OnGachaGetWeapon?.Invoke(weaponName);
+        }
+    }
 }

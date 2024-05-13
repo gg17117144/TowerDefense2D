@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 2267063651932246906}
   - component: {fileID: 2154513683451976079}
   - component: {fileID: -6960590320238865540}
+  - component: {fileID: 1112969682340496915}
+  - component: {fileID: 3144693983419615596}
   m_Layer: 0
   m_Name: Boat
   m_TagString: Untagged
@@ -119,3 +121,33 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecce2c499636874aa5ae6d15a315d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1112969682340496915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709094630173547617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7adc089fa029b14bb90fa8a8edf11a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemySoList:
+  - {fileID: 11400000, guid: c8f7e260ab7f4de4183486e51af8676b, type: 2}
+  - {fileID: 11400000, guid: d0420524e55e08747a9935d6bebfa4e9, type: 2}
+--- !u!114 &3144693983419615596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7709094630173547617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea36c204467da9847848438044338954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boatCamera: {fileID: 570365912736368057}
+  boatRight: {fileID: 0}
+  boatLeft: {fileID: 0}

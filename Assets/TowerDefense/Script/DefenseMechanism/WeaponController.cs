@@ -26,7 +26,7 @@ namespace TowerDefense.Script.DefenseMechanism
         {
             if (setting.weaponSetting.weaponType == WeaponType.Rotate)
             {
-                Debug.Log("應該有要旋轉");
+                // Debug.Log("應該有要旋轉");
                 transform.DORotate(new Vector3(0, 0, 360), 0.5f, RotateMode.WorldAxisAdd)
                     .SetLoops(-1, LoopType.Incremental);
             }
@@ -73,7 +73,7 @@ namespace TowerDefense.Script.DefenseMechanism
                     float angle = Mathf.Atan2(moveDirection.y, moveDirection.x) * Mathf.Rad2Deg;
                     if (setting.weaponSetting.weaponType == WeaponType.NotRotate)
                     {
-                        Debug.Log("應該不會旋轉");
+                        // Debug.Log("應該不會旋轉");
                         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
                     }
 
