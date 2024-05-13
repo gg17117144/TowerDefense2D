@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Iron Hammer
   m_EditorClassIdentifier: 
   weaponSetting:
-    name: 
-    icon: {fileID: 0}
+    name: Iron Hammer
+    icon: {fileID: 21300000, guid: b39d7cec774b9d649b80c30b1aff354b, type: 3}
     damage: 0
     speed: 0
-    prefab: {fileID: 0}
+    prefab: {fileID: 2189996428755576316, guid: a7145ba5b18197c41a919908050841a3, type: 3}
     weaponType: 0

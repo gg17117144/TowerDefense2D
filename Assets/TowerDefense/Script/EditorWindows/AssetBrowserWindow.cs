@@ -62,9 +62,10 @@ namespace TowerDefense.Script
 
         private void DrawRightPanel()
         {
-            EditorGUILayout.LabelField("匹配的資產:", EditorStyles.boldLabel);
+            EditorGUILayout.LabelField("資料內容:", EditorStyles.boldLabel);
 
             DisplayAssetInfo(_assetRelativePath);
+            
         }
 
         private void DisplayAssetInfo(string assetRelativePath)
