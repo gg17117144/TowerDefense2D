@@ -14,6 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defenseMechanismSetting:
     weaponSettingSo: {fileID: 11400000, guid: 277991200d3d25748bcb89af288e2a49, type: 2}
-    attackSpeed: 50
+    attackSpeed: 2
     defenseMechanismPrefab: {fileID: 8609061784279378839, guid: 316ba45a65b123e4cb309f696e302d70, type: 3}
   foldout: 1

@@ -1,6 +1,6 @@
 using System;
 using NaughtyAttributes;
-using TowerDefense.Script.Tools;
+// using TowerDefense.Script.Tools;
 using UnityEditor;
 using UnityEngine;
 
@@ -26,8 +26,7 @@ namespace TowerDefense.Script.ScriptObject.Script
     public class WeaponSettingSo : ScriptableObject
     {
         public WeaponSetting weaponSetting;
-        private AutoMatchWeapon autoMatchWeapon = new AutoMatchWeapon();
-        
+
         [Button]
         void AutoMatch()
         {
@@ -47,9 +46,9 @@ namespace TowerDefense.Script.ScriptObject.Script
                 string assetPath = AssetDatabase.GUIDToAssetPath(path);
                 Sprite prefab = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
     
-                if (prefab.name.Contains(weaponName))
+                if (prefab.name.Contains(weaponName) && prefab.name.Contains("frame"))
                 {
-                    Debug.Log("找到了匹配的Sprite");
+                    Debug.Log("找到了相對應的Sprite");
                     return prefab;
                 }
             }
