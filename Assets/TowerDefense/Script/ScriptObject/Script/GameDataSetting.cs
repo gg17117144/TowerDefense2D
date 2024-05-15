@@ -17,7 +17,7 @@ namespace TowerDefense.Script.ScriptObject.Script
 
         //TODO 需要補充武器數量
         [BoxGroup("背包資料")] [SerializeField] public List<string> bagWeaponData;
-
+        
         private void OnEnable()
         {
             // 在GameDataSetting啟用時訂閱事件
@@ -59,6 +59,12 @@ namespace TowerDefense.Script.ScriptObject.Script
             // 更新經驗條
             this.experience += experience;
             var experienceValue = this.experience / (float)maxExperience;
+            if (this.experience >= maxExperience)
+            {
+                this.experience -= maxExperience;
+                
+                ExperienceEventCenter.Broadcast(ExperienceEventType.LeverUp,1f);
+            }
             ExperienceEventCenter.Broadcast(ExperienceEventType.UpdataExperience, experienceValue);
         }
 

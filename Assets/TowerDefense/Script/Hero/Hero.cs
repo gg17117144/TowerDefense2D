@@ -1,21 +1,28 @@
 using System.Collections.Generic;
 using TowerDefense.Script.DefenseMechanism;
 using TowerDefense.Script.ScriptObject.Script;
-using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-namespace TowerDefense.Script
+namespace TowerDefense.Script.Hero
 {
     public class Hero : MonoBehaviour
     {
+        public static Hero Instance;
         [SerializeField] private HeroSettingSo heroSetting;
-        [SerializeField] private List<Transform> enemyList = new List<Transform>();
+        [SerializeField] public List<Transform> enemyList = new List<Transform>();
         private Transform _weaponPool;
         private float _stopTime = 0;
 
         [SerializeField] private Transform shootTransform;
-        
+
         private Animator _animator;
+
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         private void Start()
         {
             _animator = GetComponent<Animator>();
@@ -40,6 +47,16 @@ namespace TowerDefense.Script
                     enemyList.Remove(enemyList[i]);
                 }
             }
+
+            if (heroSetting.heroSetting.hp <= 0)
+            {
+                SceneManager.LoadScene(0);
+            }
+        }
+        
+        public void Dead()
+        {
+            DestroyObject(gameObject.transform.parent);
         }
 
         private void OnTriggerEnter2D(Collider2D other)
@@ -66,6 +83,11 @@ namespace TowerDefense.Script
                 Quaternion.identity, _weaponPool);
             WeaponController weaponController = weaponInstantiate.AddComponent<WeaponController>();
             weaponController.Initialize(weaponSo, target);
+        }
+
+        public void SetWeapon(WeaponSettingSo weaponSettingSo)
+        {
+            heroSetting.defenseMechanismSetting.weaponSettingSo = weaponSettingSo;
         }
     }
 }

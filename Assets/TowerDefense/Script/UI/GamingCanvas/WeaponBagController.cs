@@ -4,6 +4,7 @@ using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 using UnityEngine.UI;
+using TowerDefense.Script.Hero;
 
 namespace TowerDefense.Script.UI.GamingCanvas
 {
@@ -31,19 +32,22 @@ namespace TowerDefense.Script.UI.GamingCanvas
             {
                 foreach (var allWeaponSetting in allWeaponSettingSoList)
                 {
-                    if (allWeaponSetting.name.Contains(bagWeaponData))
+                    if (allWeaponSetting.name == bagWeaponData)
                     {
                         Debug.Log($"生成背包中的武器:{allWeaponSetting.name}");
                         prefab.transform.GetComponent<Image>().sprite = allWeaponSetting.weaponSetting.icon;
                         var instantiate = Instantiate(prefab, content.transform);
+                        instantiate.GetComponent<Button>().onClick.AddListener(()=>SetHeroWeapon(allWeaponSetting));
+                        instantiate.GetComponent<Button>().onClick.AddListener(CloseWeaponBag);
                         instantiate.transform.DOScale(1, 0.5f);
                     }
                 }
             }
         }
 
-        private void GetWeaponSo()
+        private void SetHeroWeapon(WeaponSettingSo weaponSettingSo)
         {
+            Hero.Hero.Instance.SetWeapon(weaponSettingSo);
         }
 
         [Button]

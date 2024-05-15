@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponSetting:
     name: Double-headed Axe
     icon: {fileID: 21300000, guid: 5cfc33bf41a198b43b8646a4387febdb, type: 3}
-    damage: 0
-    speed: 0
+    damage: 40
+    speed: 2.5
     prefab: {fileID: 2189996428755576316, guid: 7b14fc458c9cead44b795d1466f310bc, type: 3}
     weaponType: 0

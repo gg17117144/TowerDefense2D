@@ -1,13 +1,20 @@
+using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace TowerDefense.Script.Enemy
 {
     public class CreateEnemy : MonoBehaviour
     {
         [SerializeField] private List<EnemySettingData> enemySoList;
+
+        private void Start()
+        {
+            StartCreate();
+        }
 
         [Button]
         public void StartCreate()

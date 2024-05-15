@@ -1,16 +1,28 @@
 using System;
 using NaughtyAttributes;
-// using TowerDefense.Script.Tools;
+
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
+
 using UnityEngine;
 
 namespace TowerDefense.Script.ScriptObject.Script
 {
     public enum WeaponType
     {
-        Rotate,NotRotate
+        Rotate,
+        NotRotate
     }
     
+    public enum WeaponLevel
+    {
+        White,
+        Blue,
+        Purple,
+        Red
+    }
+
     [Serializable]
     public class WeaponSetting
     {
@@ -20,6 +32,7 @@ namespace TowerDefense.Script.ScriptObject.Script
         [Required] public float speed;
         [Required] public GameObject prefab;
         [Required] public WeaponType weaponType;
+        [Required] public WeaponLevel weaponLevel;
     }
 
     [CreateAssetMenu(fileName = "WeaponSettingSo", menuName = "TowerDefense2D/Create WeaponSo")]
@@ -27,6 +40,7 @@ namespace TowerDefense.Script.ScriptObject.Script
     {
         public WeaponSetting weaponSetting;
 
+#if UNITY_EDITOR
         [Button]
         void AutoMatch()
         {
@@ -36,7 +50,7 @@ namespace TowerDefense.Script.ScriptObject.Script
             weaponSetting.icon = autoMatchIcon;
             weaponSetting.prefab = autoMatchPrefab;
         }
-        
+
         Sprite AutoMatchIcon(string weaponName)
         {
             string folderPath = "Assets/TowerDefense/Sprite/Weapon";
@@ -45,7 +59,7 @@ namespace TowerDefense.Script.ScriptObject.Script
             {
                 string assetPath = AssetDatabase.GUIDToAssetPath(path);
                 Sprite prefab = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
-    
+
                 if (prefab.name.Contains(weaponName) && prefab.name.Contains("frame"))
                 {
                     Debug.Log("找到了相對應的Sprite");
@@ -56,7 +70,7 @@ namespace TowerDefense.Script.ScriptObject.Script
             Debug.Log("沒有找到相對應的圖示");
             return null;
         }
-        
+
         GameObject AutoMatchPrefab(string weaponName)
         {
             string folderPath = "Assets/TowerDefense/Prefab";
@@ -68,14 +82,14 @@ namespace TowerDefense.Script.ScriptObject.Script
 
                 if (prefab.name.Contains(weaponName))
                 {
-                    
                     Debug.Log("有抓到物件Prefab");
                     return prefab;
                 }
             }
+
             Debug.Log("沒有找到相對應的物件");
             return null;
         }
+#endif
     }
-    
 }

@@ -1,8 +1,10 @@
 using System;
+using System.Collections.Generic;
 using NaughtyAttributes;
+using TowerDefense.Script.EventCenter;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace TowerDefense.Script
 {
@@ -12,27 +14,46 @@ namespace TowerDefense.Script
         [SerializeField] private GameDataSetting gameData;
         [SerializeField] public GameDataSetting gamingData;
 
+        [SerializeField] private List<Skill.Skill> skillList;
+
         private void Awake()
         {
             instance = this;
             gamingData = gameData;
         }
-        
-        public void ConsumeLoot(int value) 
+
+        private void Update()
         {
-            // 在這裡實現扭蛋的邏輯
-            gamingData.loot -= value;
-        }
-        
-        public void UpdataMaxExperience(int value)
-        {
-            gamingData.maxExperience = value;
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                MoneyEventMediator.MoneyEnemyDeathNotify(99,99);
+            }
+            if (Input.GetKeyDown(KeyCode.L))
+            {
+                gameData.bagWeaponData = new List<string>();
+                gameData.bagWeaponData.Add("Stone Axe");
+            }
+            if (Input.GetKeyDown(KeyCode.P))
+            {
+                SceneManager.LoadScene(0);
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                MoneyEventMediator.MoneyEnemyDeathNotify(-99,-99);
+            }
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                MoneyEventMediator.MoneyEnemyDeathNotify(-gameData.money,-gameData.loot);
+            }
         }
 
-        [Button]
-        public void ResetExperience()
+        public GameDataSetting GetgameData()
         {
-            gamingData.experience = 0;
+            for (int i = 0; i < skillList.Count; i++)
+            {
+
+            }
+            return gameData;
         }
         
         [Button]

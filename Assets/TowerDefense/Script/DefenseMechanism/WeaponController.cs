@@ -13,6 +13,7 @@ namespace TowerDefense.Script.DefenseMechanism
 
         public int DamageAmount => damageAmount;
         [SerializeField] private int damageAmount;
+        private Vector3 initialForward; // 物体的初始前方向
 
         public void Initialize(WeaponSettingSo weaponSo, Transform targetTransform)
         {
@@ -20,6 +21,8 @@ namespace TowerDefense.Script.DefenseMechanism
             target = targetTransform;
             speed = setting.weaponSetting.speed;
             damageAmount = setting.weaponSetting.damage;
+
+            initialForward = transform.forward;
         }
 
         private void Start()
@@ -27,7 +30,7 @@ namespace TowerDefense.Script.DefenseMechanism
             if (setting.weaponSetting.weaponType == WeaponType.Rotate)
             {
                 // Debug.Log("應該有要旋轉");
-                transform.DORotate(new Vector3(0, 0, 360), 0.5f, RotateMode.WorldAxisAdd)
+                transform.DORotate(new Vector3(0, 0, -360), 0.5f, RotateMode.WorldAxisAdd)
                     .SetLoops(-1, LoopType.Incremental);
             }
         }
@@ -40,7 +43,8 @@ namespace TowerDefense.Script.DefenseMechanism
             }
             else
             {
-                DestroyObject();
+                transform.Translate(initialForward * speed * Time.deltaTime);
+                Invoke(nameof(DestroyObject), 3f);
             }
         }
 
@@ -84,7 +88,20 @@ namespace TowerDefense.Script.DefenseMechanism
             }
             catch (Exception)
             {
-                DestroyObject();
+                // DestroyObject();
+                if (setting.weaponSetting.weaponType == WeaponType.NotRotate)
+                {
+                    transform.Translate(Vector3.right * speed * Time.deltaTime);
+                }
+                else
+                {
+                    // Vector3 initialForwardInWorldSpace = transform.TransformDirection(initialForward);
+                    // transform.position += initialForwardInWorldSpace * speed * Time.deltaTime;
+                    transform.DOScale(0, 0.5f).OnComplete(()=> DestroyObject());
+                    // transform.Translate( initialForwardInWorldSpace* speed * Time.deltaTime);
+                }
+
+                Invoke(nameof(DestroyObject), 3f);
             }
         }
 

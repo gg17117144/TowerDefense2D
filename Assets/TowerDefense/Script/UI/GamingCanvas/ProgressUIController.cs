@@ -14,6 +14,7 @@ namespace TowerDefense.Script.UI
         [SerializeField] private Transform handleLeftPos;
         [SerializeField] private Image progressHandle;
 
+        [SerializeField] private int fakeTime = 1;
         private void Initialize()
         {
             ChangeProgressText(1);
@@ -22,7 +23,27 @@ namespace TowerDefense.Script.UI
 
         private void Start()
         {
+            // fakeTime = 1;
             Initialize();
+            TempTime();
+            InvokeRepeating(nameof(FakeTime), 60f, 60f);
+            // InvokeRepeating(nameof(TempTime),1,1);
+        }
+
+        void FakeTime()
+        {
+            progressBar.DOKill();
+            progressHandle.transform.DOKill();
+            fakeTime++;
+            ChangeProgressText(fakeTime);
+            progressBar.DOFillAmount(1, 0.5f);
+            progressHandle.transform.DOMove(CalculatePos(1), 0.5f).OnComplete((() => TempTime()));
+        }
+
+        void TempTime()
+        {
+            progressBar.DOFillAmount(0, 60f);
+            progressHandle.transform.DOMove(CalculatePos(0), 60f);
         }
 
         public void ChangeProgressBarValue(float value)

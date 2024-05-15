@@ -1,4 +1,5 @@
 using System.Collections;
+using DG.Tweening;
 using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
 using TowerDefense.Script.EventCenter;
@@ -15,6 +16,11 @@ namespace TowerDefense.Script.Enemy
         private StateMachine _fsm;
         private Transform _heroTransform;
         private Animator _animator;
+        
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private AudioClip walkSound;
+        [SerializeField] private AudioClip hurtSound;
+        [SerializeField] private GameObject deadPrefab;
 
         [Header("數值")] [SerializeField] private int _hp;
 
@@ -32,8 +38,19 @@ namespace TowerDefense.Script.Enemy
             _fsm = new StateMachine();
             _fsm.AddState("ChaseHero", onLogic: state => ChaseHero());
             _fsm.AddState("AttackHero", onLogic: state => AttackHero());
+            _fsm.AddState("Dead", onLogic: state => TempDead());
             _fsm.SetStartState("ChaseHero");
             _fsm.Init();
+            
+            _animator = GetComponent<Animator>();
+            audioSource = GetComponent<AudioSource>();
+            audioSource.clip = walkSound;
+            audioSource.Play();
+        }
+
+        void TempDead()
+        {
+            
         }
 
         // Update is called once per frame
@@ -77,9 +94,15 @@ namespace TowerDefense.Script.Enemy
             if (_hp <= 0)
             {
                 // TODO 需要更換物件池
-                DestroyObject();
+                DamageSound();
+                DestroyHeroList();
                 MoneyEventMediator.MoneyEnemyDeathNotify(enemySettingData.bounty,enemySettingData.loot);
                 ExperienceEventMediator.ExperienceEnemyDeathNotify(10);
+                _fsm.RequestStateChange("Dead");
+                // transform.GetChild(0).DOScale(0, 0.5f);
+                Instantiate(deadPrefab,transform.position,Quaternion.identity);
+                Dead();
+                // Invoke(nameof(Dead),1f);
             }
         }
 
@@ -91,10 +114,31 @@ namespace TowerDefense.Script.Enemy
             }
         }
 
-        private void DestroyObject()
+        void DestroyHeroList()
         {
-            //TODO 需要更改成物件池的作法
-            Destroy(transform.parent.gameObject);
+            // Debug.Log("清空Hero追蹤目標");
+            // Hero.Hero.Instance.enemyList.RemoveAt(0);
+        }
+        
+        private void DamageSound()
+        {
+            StartCoroutine(nameof(StartDamageSound));
+        }
+
+        IEnumerator StartDamageSound()
+        {
+            audioSource.clip = hurtSound;
+            audioSource.Play();
+            _animator.Play("Dead");
+            yield return new WaitForSeconds(0.5f);
+            // audioSource.clip = walkSound;
+            // audioSource.Play();
+            // TODO 先暫時寫在這裡
+        }
+
+        public void Dead()
+        {
+            Destroy(gameObject.transform.parent.gameObject);
         }
 
         private void DamageEffect()

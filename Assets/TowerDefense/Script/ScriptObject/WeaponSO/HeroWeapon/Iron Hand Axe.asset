@@ -15,7 +15,7 @@ MonoBehaviour:
   weaponSetting:
     name: Iron Hand Axe
     icon: {fileID: 21300000, guid: b62d24665a178f64ab5806dcf99fd1c8, type: 3}
-    damage: 0
-    speed: 0
+    damage: 20
+    speed: 35
     prefab: {fileID: 2189996428755576316, guid: 5dbb84fc35d1f5f4aa73000ede502dc1, type: 3}
     weaponType: 0

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7720056c3175b724e9973d79e08a7ee5, type: 3}
+  m_Name: Pirate_03
+  m_EditorClassIdentifier: 
+  hp: 200
+  moveSpeed: 0.007
+  attackSpeed: 0
+  bounty: 25
+  loot: 3
+  weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
+  enemyPrefab: {fileID: 3831903891935709264, guid: 7b597ea95300533478219ebe86f0984b, type: 3}

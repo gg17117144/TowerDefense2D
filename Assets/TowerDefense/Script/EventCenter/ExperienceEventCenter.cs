@@ -5,7 +5,7 @@ namespace TowerDefense.Script.EventCenter
 {
     public enum ExperienceEventType
     {
-        UpdataExperience,
+        UpdataExperience, LeverUp,
     }
 
     public class ExperienceEventCenter

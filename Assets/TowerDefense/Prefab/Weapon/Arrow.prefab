@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 900945628212483900}
   - component: {fileID: 9131194628643728877}
   - component: {fileID: -4611575145470482046}
+  - component: {fileID: -8796395892544822854}
   - component: {fileID: 4441583591176846849}
   m_Layer: 0
   m_Name: Arrow
@@ -121,6 +122,33 @@ CapsuleCollider2D:
   m_Offset: {x: -0.023307981, y: 0.0017259673}
   m_Size: {x: 0.6504296, y: 0.21016626}
   m_Direction: 1
+--- !u!50 &-8796395892544822854
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1579941462846369181}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!114 &4441583591176846849
 MonoBehaviour:
   m_ObjectHideFlags: 0
