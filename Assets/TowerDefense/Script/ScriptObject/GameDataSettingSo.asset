@@ -12,10 +12,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d9a18fca6832a04e8bc2730c0f4771d, type: 3}
   m_Name: GameDataSettingSo
   m_EditorClassIdentifier: 
-  hp: 100
-  money: 890
-  loot: 20000
+  hp: 200
+  money: 5572
+  loot: 1169016
   progress: 0
   maxExperience: 400
-  experience: 730
-  bagWeaponData: []
+  experience: 220
+  bagWeaponData:
+  - Stone Axe
+  - Kong Axe
+  - Blood Axe
+  - Viking Axe
+  - Hand Axe
+  - Mjolnir
+  - Double-headed Axe
+  - torch
+  - Fellling Axe
+  - Double Axe
+  - Small StoneAxe
+  - stone Hammer
