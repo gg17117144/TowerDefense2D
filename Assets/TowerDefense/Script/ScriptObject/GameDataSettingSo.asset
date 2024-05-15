@@ -13,21 +13,10 @@ MonoBehaviour:
   m_Name: GameDataSettingSo
   m_EditorClassIdentifier: 
   hp: 200
-  money: 5572
-  loot: 1169016
+  money: 0
+  loot: 0
   progress: 0
   maxExperience: 400
-  experience: 220
+  experience: 0
   bagWeaponData:
   - Stone Axe
-  - Kong Axe
-  - Blood Axe
-  - Viking Axe
-  - Hand Axe
-  - Mjolnir
-  - Double-headed Axe
-  - torch
-  - Fellling Axe
-  - Double Axe
-  - Small StoneAxe
-  - stone Hammer

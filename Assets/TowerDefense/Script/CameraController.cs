@@ -16,13 +16,13 @@ namespace TowerDefense.Script
         }
 
         [Button]
-        void MoveCameraRight()
+        public void MoveCameraRight()
         {
             mainCamera.DOMove(cameraRight.position, 1f);
         }
         
         [Button]
-        void MoveCameraMid()
+        public void MoveCameraMid()
         {
             mainCamera.DOMove(cameraMid.position, 1f);
         }
