@@ -960,7 +960,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.03, y: 0.051174134, z: -3.8118258}
+  m_LocalPosition: {x: 1.9377251, y: 0.0011739433, z: -3.8118258}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -988,7 +988,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72ece51f2901e7445ab60da3685d6b5f, type: 3}
   m_Name: 
@@ -2645,7 +2645,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070512241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
   m_Name: 
@@ -2660,7 +2660,7 @@ MonoBehaviour:
   m_Follow: {fileID: 0}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 4.95
+    OrthographicSize: 5
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -2700,7 +2700,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2070512241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a2fba25a5cd15594e8f050a11e386c80, type: 3}
   m_Name: 
@@ -2757,6 +2757,34 @@ PrefabInstance:
     - target: {fileID: 26950268454251392, guid: f600b68209d4f454881372974e92070e, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -25.926903
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -88.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -14.330017
+      objectReference: {fileID: 0}
+    - target: {fileID: 462874704500516165, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 23.8
       objectReference: {fileID: 0}
     - target: {fileID: 608769028968127820, guid: f600b68209d4f454881372974e92070e, type: 3}
       propertyPath: content
@@ -3064,7 +3092,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4394640435982718395, guid: f600b68209d4f454881372974e92070e, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -117.19989
+      value: -117.200134
       objectReference: {fileID: 0}
     - target: {fileID: 4394640435982718395, guid: f600b68209d4f454881372974e92070e, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -3462,6 +3490,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 7442688251696536369, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7443197827113815290, guid: f600b68209d4f454881372974e92070e, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 425.69995
+      objectReference: {fileID: 0}
     - target: {fileID: 7451317329757606137, guid: f600b68209d4f454881372974e92070e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
