@@ -1,23 +1,20 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefense.Script.wwwwwwwwwwwwwwwwwwww
+namespace TowerDefense.Prefab.Script.ButtonClickAudio
 {
     public class ButtonSound : MonoBehaviour
     {
         public AudioClip clickSound;
-        private AudioSource audioSource;
+        private AudioSource _audioSource;
 
         void Start()
         {
-            // 为按钮添加一个 AudioSource 组件
-            audioSource = gameObject.AddComponent<AudioSource>();
-            audioSource.clip = clickSound;
-        
-            // 获取按钮组件
+            _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.clip = clickSound;
+            
             Button button = GetComponent<Button>();
-
-            // 为按钮点击事件添加音效播放
+            
             if (button != null)
             {
                 button.onClick.AddListener(PlaySound);
@@ -26,7 +23,7 @@ namespace TowerDefense.Script.wwwwwwwwwwwwwwwwwwww
 
         void PlaySound()
         {
-            audioSource.Play();
+            _audioSource.Play();
         }
     }
 }
