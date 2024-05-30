@@ -13,7 +13,8 @@ namespace TowerDefense.Script.Enemy
 
         private void Start()
         {
-            StartCreate();
+            Invoke(nameof(StartCreate),8f);
+            // StartCreate();
         }
 
         [Button]
