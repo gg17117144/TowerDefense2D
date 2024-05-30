@@ -23,11 +23,27 @@ namespace TowerDefense.Script.UI.GamingCanvas
             gachaButton.onClick.AddListener(OpenGacha);
             enemyMenuButton.onClick.AddListener(OpenEnemyMenu);
             settingButton.onClick.AddListener(OpenSetting);
+
+            taskMenuButton.interactable = false;
+            weaponButton.interactable = false;
+            gachaButton.interactable = false;
+            enemyMenuButton.interactable = false;
+            settingButton.interactable = false;
         }
 
         private void Start()
         {
             Initialize();
+            Invoke(nameof(TempOpenButton),10f);
+        }
+
+        void TempOpenButton()
+        {
+            taskMenuButton.interactable = false;
+            weaponButton.interactable = true;
+            gachaButton.interactable = true;
+            enemyMenuButton.interactable = false;
+            settingButton.interactable = false;
         }
 
         private void OpenEnemyMenu()
