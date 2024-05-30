@@ -79,26 +79,24 @@ namespace TowerDefense.Script.UI.RaffleCanvas
             var range = Random.Range(0, maxNum);
             if (range <= 1)
             {
-                var rangenum = Random.Range(12, 15);
-                return rangenum;
+                var rangeNum = Random.Range(12, 15);
+                return rangeNum;
             }
             else if (range <= 6)
             {
-                var rangenum = Random.Range(8, 12);
-                return rangenum;
+                var rangeNum = Random.Range(8, 12);
+                return rangeNum;
             }
             else if (range <= 40)
             {
-                var rangenum = Random.Range(4, 8);
-                return rangenum;
+                var rangeNum = Random.Range(4, 8);
+                return rangeNum;
             }
             else
             {
-                var rangenum = Random.Range(0, 4);
-                return rangenum;
+                var rangeNum = Random.Range(0, 4);
+                return rangeNum;
             }
-
-            return 0;
         }
     }
 }
