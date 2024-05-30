@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using NaughtyAttributes;
+using TowerDefense.Script.UI;
 using UnityEngine;
 
 namespace TowerDefense.Script
@@ -10,20 +11,22 @@ namespace TowerDefense.Script
         [SerializeField] private Transform mainCamera;
         [SerializeField] private Transform cameraRight, cameraMid;
 
-        private void Start()
+        private void Awake()
         {
-            mainCamera = this.transform;
+            mainCamera = transform;
         }
 
         [Button]
         public void MoveCameraRight()
         {
+            GamingUIHandler.Instance.CloseGamingUI();
             mainCamera.DOMove(cameraRight.position, 1f);
         }
         
         [Button]
         public void MoveCameraMid()
         {
+            GamingUIHandler.Instance.OpenGamingUI();
             mainCamera.DOMove(cameraMid.position, 1f);
         }
     }
