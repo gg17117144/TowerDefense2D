@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -21,13 +22,20 @@ namespace TowerDefense.Script.UI
             ChangeProgressBarValue(1);
         }
 
+        private void Awake()
+        {
+            Initialize();
+        }
+
         private void Start()
         {
-            // fakeTime = 1;
-            Initialize();
+            Invoke(nameof(StartWaves),7f);
+        }
+
+        public void StartWaves()
+        {
             TempTime();
             InvokeRepeating(nameof(FakeTime), 60f, 60f);
-            // InvokeRepeating(nameof(TempTime),1,1);
         }
 
         void FakeTime()
@@ -38,6 +46,7 @@ namespace TowerDefense.Script.UI
             ChangeProgressText(fakeTime);
             progressBar.DOFillAmount(1, 0.5f);
             progressHandle.transform.DOMove(CalculatePos(1), 0.5f).OnComplete((() => TempTime()));
+            GamingUIHandler.Instance.ExperienceUIController.CallInstantiateSkill(0);
         }
 
         void TempTime()
