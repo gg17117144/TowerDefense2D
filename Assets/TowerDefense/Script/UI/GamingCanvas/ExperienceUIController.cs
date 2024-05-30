@@ -15,8 +15,8 @@ namespace TowerDefense.Script.UI
         {
             ChangeExperienceBarValue(GameData.instance.gamingData.experience);
             
-            ExperienceEventCenter.AddListener(ExperienceEventType.UpdataExperience,ChangeExperienceBarValue);
-            ExperienceEventCenter.AddListener(ExperienceEventType.LeverUp,CallInstantiateSkill);
+            // ExperienceEventCenter.AddListener(ExperienceEventType.UpdataExperience,ChangeExperienceBarValue);
+            // ExperienceEventCenter.AddListener(ExperienceEventType.LeverUp,CallInstantiateSkill);
         }
 
         private void Start()
