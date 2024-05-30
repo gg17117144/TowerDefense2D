@@ -13,6 +13,9 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [SerializeField] private GameObject group;
         [SerializeField] private List<Skill.Skill> skillList;
 
+        [SerializeField, ReadOnly] private int _canChooseSkillNum = 0;
+        [SerializeField, ReadOnly] private bool _isChooseSkill = false;
+
         private void Initialize()
         {
             skillList = AllGameData.instance.allSkillSettings;
@@ -23,14 +26,30 @@ namespace TowerDefense.Script.UI.GamingCanvas
             Initialize();
         }
 
+        private void Update()
+        {
+            if (_canChooseSkillNum >= 1)
+            {
+                if (_isChooseSkill == false)
+                {
+                    StartCoroutine(nameof(StartInstantiateSkill));
+                }
+            }
+        }
+
         [Button]
         public void InstantiateSkill()
         {
-            StartCoroutine(nameof(StartInstantiateSkill));
+            _canChooseSkillNum++;
+            if (_canChooseSkillNum == 1)
+            {
+                StartCoroutine(nameof(StartInstantiateSkill));
+            }
         }
 
         IEnumerator StartInstantiateSkill()
         {
+            _isChooseSkill = true;
             group.SetActive(true);
             group.transform.localScale = Vector3.one;
             group.GetComponent<Image>().DOFade(0, 0);
@@ -57,11 +76,13 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [Button]
         private void ClearGroup()
         {
+            _canChooseSkillNum--;
             for (int i = 0; i < group.transform.childCount; i++)
             {
                 var child = group.transform.GetChild(i);
                 child.GetComponent<Button>().onClick.RemoveAllListeners();
             }
+
             StartCoroutine(nameof(StartClearGroup));
         }
 
@@ -74,7 +95,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
                 yield return new WaitForSeconds(0.1f);
             }
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.7f);
             for (int i = 0; i < group.transform.childCount; i++)
             {
                 var child = group.transform.GetChild(i);
@@ -82,7 +103,12 @@ namespace TowerDefense.Script.UI.GamingCanvas
             }
 
             group.transform.localScale = Vector3.one;
-            group.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => group.SetActive(false));
+            //TODO 這裡需要更新實現邏輯
+            if (_canChooseSkillNum <= 0)
+            {
+                group.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => group.SetActive(false));
+            }
+            _isChooseSkill = false;
         }
     }
 }
