@@ -8,6 +8,7 @@ namespace TowerDefense.Script.ScriptObject.Script
         [Header("數值")] public int hp;
         public float moveSpeed;
         public float attackSpeed;
+        public float damage;
         public int bounty;
         public int loot;
 
