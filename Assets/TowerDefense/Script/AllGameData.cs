@@ -1,8 +1,6 @@
-using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
-using UnityEditor;
 using UnityEngine;
 
 namespace TowerDefense.Script
@@ -12,9 +10,9 @@ namespace TowerDefense.Script
         public static AllGameData instance;
 
         public List<WeaponSettingSo> allWeaponSettings;
-        
+
         public List<Skill.Skill> allSkillSettings;
-        
+
         private const string FolderPath = "Assets/TowerDefense/Script/ScriptObject"; // 起始資料夾路徑
 
         private void Awake()

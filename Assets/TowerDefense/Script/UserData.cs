@@ -8,9 +8,9 @@ using UnityEngine.SceneManagement;
 
 namespace TowerDefense.Script
 {
-    public class GameData : MonoBehaviour
+    public class UserData : MonoBehaviour
     {
-        public static GameData instance;
+        public static UserData instance;
         [SerializeField] private GameDataSetting gameData;
         [SerializeField] public GameDataSetting gamingData;
 
@@ -24,14 +24,14 @@ namespace TowerDefense.Script
 
         private void Update()
         {
+            // 暫時測試用特殊功能
             if (Input.GetKeyDown(KeyCode.K))
             {
                 MoneyEventMediator.MoneyEnemyDeathNotify(99,99);
             }
             if (Input.GetKeyDown(KeyCode.L))
             {
-                gameData.bagWeaponData = new List<string>();
-                gameData.bagWeaponData.Add("Stone Axe");
+                gameData.bagWeaponData = new List<string> { "Stone Axe" };
             }
             if (Input.GetKeyDown(KeyCode.P))
             {
@@ -47,17 +47,13 @@ namespace TowerDefense.Script
             }
         }
 
-        public GameDataSetting GetgameData()
+        public GameDataSetting GetGameData()
         {
-            for (int i = 0; i < skillList.Count; i++)
-            {
-
-            }
             return gameData;
         }
         
         [Button]
-        public void SavePlayerpref()
+        public void SavePlayerPref()
         {
             PlayerPrefs.SetInt("hp",gamingData.hp);
             PlayerPrefs.SetInt("money",gamingData.money);
@@ -71,7 +67,7 @@ namespace TowerDefense.Script
         }
 
         [Button]
-        void ClearPlayerpref()
+        void ClearPlayerPref()
         {
             PlayerPrefs.DeleteAll();
         }

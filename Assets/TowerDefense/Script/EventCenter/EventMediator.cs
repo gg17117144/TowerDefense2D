@@ -1,6 +1,9 @@
+using JetBrains.Annotations;
+using UnityEngine;
+
 namespace TowerDefense.Script.EventCenter
 {
-    public class MoneyEventMediator
+    public static class MoneyEventMediator
     {
         public static event System.Action<int, int> OnEnemyDeathGetMoney;
 
@@ -17,23 +20,33 @@ namespace TowerDefense.Script.EventCenter
         }
     }
     
-    public class ExperienceEventMediator
+    public static class ExperienceEventMediator
     {
         public static event System.Action<int> OnEnemyDeathGetExperience;
 
-        public static void ExperienceEnemyDeathNotify(int Experience)
+        public static void ExperienceEnemyDeathNotify(int experience)
         {
-            OnEnemyDeathGetExperience?.Invoke(Experience);
+            OnEnemyDeathGetExperience?.Invoke(experience);
         }
     }
     
-    public class WeaponEventMediator
+    public static class WeaponEventMediator
     {
         public static event System.Action<string> OnGachaGetWeapon;
 
         public static void DoGachaGetWeapon(string weaponName)
         {
             OnGachaGetWeapon?.Invoke(weaponName);
+        }
+    }
+    
+    public static class EnemyEventMediator
+    {
+        [CanBeNull] public static event System.Action<Transform> OnEnemyDead;
+
+        public static void DoEnemyDead(Transform enemy)
+        {
+            OnEnemyDead?.Invoke(enemy);
         }
     }
 }

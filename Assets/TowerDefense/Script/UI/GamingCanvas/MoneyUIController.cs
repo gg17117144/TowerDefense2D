@@ -1,7 +1,5 @@
 using TMPro;
 using TowerDefense.Script.EventCenter;
-using TowerDefense.Script.ScriptObject.Script;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefense.Script.UI.GamingCanvas
@@ -13,8 +11,8 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void Initialize()
         {
-            ChangeCoinTextValue(GameData.instance.gamingData.money);
-            ChangeLootTextValue(GameData.instance.gamingData.loot);
+            ChangeCoinTextValue(UserData.instance.gamingData.money);
+            ChangeLootTextValue(UserData.instance.gamingData.loot);
 
             MoneyEventCenter.AddListener(MoneyEventType.AddMoney, ChangeCoinTextValue);
             MoneyEventCenter.AddListener(MoneyEventType.AddLoot, ChangeLootTextValue);

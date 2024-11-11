@@ -1,10 +1,9 @@
-using System;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefense.Script.UI
+namespace TowerDefense.Script.UI.GamingCanvas
 {
     public class ProgressUIController : MonoBehaviour
     {
@@ -16,6 +15,7 @@ namespace TowerDefense.Script.UI
         [SerializeField] private Image progressHandle;
 
         [SerializeField] private int fakeTime = 1;
+
         private void Initialize()
         {
             ChangeProgressText(1);
@@ -29,7 +29,7 @@ namespace TowerDefense.Script.UI
 
         private void Start()
         {
-            Invoke(nameof(StartWaves),7f);
+            Invoke(nameof(StartWaves), 7f);
         }
 
         public void StartWaves()
@@ -45,8 +45,8 @@ namespace TowerDefense.Script.UI
             fakeTime++;
             ChangeProgressText(fakeTime);
             progressBar.DOFillAmount(1, 0.5f);
-            progressHandle.transform.DOMove(CalculatePos(1), 0.5f).OnComplete((() => TempTime()));
-            GamingUIHandler.Instance.ExperienceUIController.CallInstantiateSkill(0);
+            progressHandle.transform.DOMove(CalculatePos(1), 0.5f).OnComplete((TempTime));
+            GamingUIHandler.instance.ExperienceUIController.CallInstantiateSkill(0);
         }
 
         void TempTime()

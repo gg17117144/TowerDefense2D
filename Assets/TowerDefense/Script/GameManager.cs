@@ -1,18 +1,18 @@
-using System;
 using UnityEngine;
 using UnityHFSM;
 
-namespace TowerDefense.Prefab.Script
+namespace TowerDefense.Script
 {
     public class GameManager : MonoBehaviour
     {
         private StateMachine _fsm;
+
         //TODO 狀態機去觸發事件
-        public static GameManager Instance;
-        
+        public static GameManager instance;
+
         private void Awake()
         {
-            Instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
 
@@ -25,7 +25,7 @@ namespace TowerDefense.Prefab.Script
             _fsm.SetStartState("Defense");
             _fsm.Init();
         }
-        
+
         private void Start()
         {
             Initialize();
@@ -33,18 +33,14 @@ namespace TowerDefense.Prefab.Script
 
         private void Defense()
         {
-            
         }
-        
+
         private void Dead()
         {
-
         }
 
         private void LevelUp()
         {
-
         }
-
     }
 }

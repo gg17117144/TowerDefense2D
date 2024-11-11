@@ -1,5 +1,4 @@
 using System.Collections;
-using DG.Tweening;
 using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
 using TowerDefense.Script.EventCenter;
@@ -15,25 +14,29 @@ namespace TowerDefense.Script.Enemy
 
         private StateMachine _fsm;
         private Transform _heroTransform;
+        private Transform _deadObjectPool;
         private Animator _animator;
-        
+
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private AudioClip walkSound;
         [SerializeField] private AudioClip hurtSound;
         [SerializeField] private GameObject deadPrefab;
 
-        [Header("數值")] [SerializeField] private int _hp;
+        private GameObject _deadPrefab;
+
+        [Header("數值")] [SerializeField] private int hp;
 
         public void Initialize(EnemySettingData enemySo)
         {
             enemySettingData = enemySo;
-            _hp = enemySettingData.hp;
+            hp = enemySettingData.hp;
         }
 
         // Start is called before the first frame update
-        void Start()
+        void OnEnable()
         {
             _heroTransform = GameObject.FindWithTag("Hero").transform;
+            _deadObjectPool = GameObject.Find("DeadObjectPool").transform;
 
             _fsm = new StateMachine();
             _fsm.AddState("ChaseHero", onLogic: state => ChaseHero());
@@ -41,16 +44,17 @@ namespace TowerDefense.Script.Enemy
             _fsm.AddState("Dead", onLogic: state => TempDead());
             _fsm.SetStartState("ChaseHero");
             _fsm.Init();
-            
+
             _animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             audioSource.clip = walkSound;
             audioSource.Play();
+            
+            transform.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
         void TempDead()
         {
-            
         }
 
         // Update is called once per frame
@@ -87,22 +91,12 @@ namespace TowerDefense.Script.Enemy
 
         private void DamageTaken(int damageAmount)
         {
-            _hp -= damageAmount;
+            hp -= damageAmount;
             DamageEffect();
-            // Debug.Log($"怪物:{gameObject.name}受了{damageAmount}點傷害，目前血量剩餘{_hp}");
             //TODO 需要跳出UI字樣
-            if (_hp <= 0)
+            if (hp <= 0)
             {
-                // TODO 需要更換物件池
-                DamageSound();
-                DestroyHeroList();
-                MoneyEventMediator.MoneyEnemyDeathNotify(enemySettingData.bounty,enemySettingData.loot);
-                ExperienceEventMediator.ExperienceEnemyDeathNotify(10);
-                _fsm.RequestStateChange("Dead");
-                // transform.GetChild(0).DOScale(0, 0.5f);
-                Instantiate(deadPrefab,transform.position,Quaternion.identity);
                 Dead();
-                // Invoke(nameof(Dead),1f);
             }
         }
 
@@ -114,31 +108,52 @@ namespace TowerDefense.Script.Enemy
             }
         }
 
-        void DestroyHeroList()
+        private void Dead()
         {
-            // Debug.Log("清空Hero追蹤目標");
-            // Hero.Hero.Instance.enemyList.RemoveAt(0);
-        }
-        
-        private void DamageSound()
-        {
-            StartCoroutine(nameof(StartDamageSound));
+            DamageSound();
+            DamageAnimation();
+            DeadEvent();
+            DeadReset();
+            OpenDeadPrefab();
         }
 
-        IEnumerator StartDamageSound()
+        private void DamageSound()
         {
             audioSource.clip = hurtSound;
             audioSource.Play();
-            _animator.Play("Dead");
-            yield return new WaitForSeconds(0.5f);
-            // audioSource.clip = walkSound;
-            // audioSource.Play();
-            // TODO 先暫時寫在這裡
         }
 
-        public void Dead()
+        private void DamageAnimation()
         {
-            Destroy(gameObject.transform.parent.gameObject);
+            _animator.Play("Dead");
+        }
+
+        private void DeadEvent()
+        {
+            MoneyEventMediator.MoneyEnemyDeathNotify(enemySettingData.bounty, enemySettingData.loot);
+            ExperienceEventMediator.ExperienceEnemyDeathNotify(10);
+            EnemyEventMediator.DoEnemyDead(transform);
+        }
+
+        private void DeadReset()
+        {
+            _fsm.RequestStateChange("Dead");
+            transform.gameObject.SetActive(false);
+        }
+
+        private void OpenDeadPrefab()
+        {
+            if (_deadPrefab == null)
+            {
+                _deadPrefab = Instantiate(deadPrefab, transform.position, Quaternion.identity, _deadObjectPool);
+            }
+            else
+            {
+                _deadPrefab.SetActive(true);
+            }
+
+            // 將死亡物件移動到怪物原點
+            _deadPrefab.transform.position = transform.position;
         }
 
         private void DamageEffect()

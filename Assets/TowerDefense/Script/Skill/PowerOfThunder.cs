@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace TowerDefense.Script.Skill
 {
-    [CreateAssetMenu(fileName = "PowerofThunder", menuName = "Skills/PowerofThunder")]
-    public class PowerofThunder : Skill
+    [CreateAssetMenu(fileName = "PowerOfThunder", menuName = "Skills/PowerOfThunder")]
+    public class PowerOfThunder : Skill
     {
         public override void ActivateSkill()
         {
