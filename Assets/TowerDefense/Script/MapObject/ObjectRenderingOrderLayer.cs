@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace TowerDefense.Script.MapObject
@@ -7,6 +6,7 @@ namespace TowerDefense.Script.MapObject
     {
         private SpriteRenderer _spriteRenderer;
         [SerializeField] private int difference = 0;
+
         private void Start()
         {
             // SetSortingLayer();

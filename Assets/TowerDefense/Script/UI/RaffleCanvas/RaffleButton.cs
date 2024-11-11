@@ -39,7 +39,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGacha1Time()
         {
-            if (GameData.instance.gamingData.loot >= 100)
+            if (UserData.instance.gamingData.loot >= 100)
             {
                 Debug.Log($"扭蛋一次");
                 MoneyEventMediator.DoGachaConsumeLoot(-100);
@@ -53,7 +53,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGacha10Time()
         {
-            if (GameData.instance.gamingData.loot >= 1000)
+            if (UserData.instance.gamingData.loot >= 1000)
             {
                 Debug.Log($"扭蛋十次");
                 MoneyEventMediator.DoGachaConsumeLoot(-1000);
@@ -67,7 +67,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         
         void DoGachaTrustYouSelf()
         {
-            if (GameData.instance.gamingData.loot >= 100)
+            if (UserData.instance.gamingData.loot >= 100)
             {
                 Debug.Log($"扭蛋相信自己一次");
                 MoneyEventMediator.DoGachaConsumeLoot(-100);

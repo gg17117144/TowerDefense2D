@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace TowerDefense.Script.Skill
 {
-    [CreateAssetMenu(fileName = "SmallBagofGoldCoins", menuName = "Skills/SmallBagofGoldCoins")]
-    public class SmallBagofGoldCoins : Skill
+    [CreateAssetMenu(fileName = "SmallBagOfGoldCoins", menuName = "Skills/SmallBagOfGoldCoins")]
+    public class SmallBagOfGoldCoins : Skill
     {
         public override void ActivateSkill()
         {

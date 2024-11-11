@@ -11,7 +11,7 @@ namespace TowerDefense.Script
 
         private void Destroy()
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
         }
     }
 }

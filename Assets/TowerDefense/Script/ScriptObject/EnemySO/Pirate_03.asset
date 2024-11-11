@@ -15,7 +15,8 @@ MonoBehaviour:
   hp: 200
   moveSpeed: 0.007
   attackSpeed: 0
+  damage: 0
   bounty: 25
   loot: 3
   weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
-  enemyPrefab: {fileID: 3831903891935709264, guid: 7b597ea95300533478219ebe86f0984b, type: 3}
+  enemyPrefab: {fileID: 508513267028415702, guid: 7b597ea95300533478219ebe86f0984b, type: 3}

@@ -1,5 +1,6 @@
 using System;
 using DG.Tweening;
+using TowerDefense.Script.EventCenter;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
@@ -13,7 +14,7 @@ namespace TowerDefense.Script.DefenseMechanism
 
         public int DamageAmount => damageAmount;
         [SerializeField] private int damageAmount;
-        private Vector3 initialForward; // 物体的初始前方向
+        private Vector3 _initialForward; // 物体的初始前方向
 
         public void Initialize(WeaponSettingSo weaponSo, Transform targetTransform)
         {
@@ -22,7 +23,7 @@ namespace TowerDefense.Script.DefenseMechanism
             speed = setting.weaponSetting.speed;
             damageAmount = setting.weaponSetting.damage;
 
-            initialForward = transform.forward;
+            _initialForward = transform.forward;
         }
 
         private void Start()
@@ -33,6 +34,7 @@ namespace TowerDefense.Script.DefenseMechanism
                 transform.DORotate(new Vector3(0, 0, -360), 0.5f, RotateMode.WorldAxisAdd)
                     .SetLoops(-1, LoopType.Incremental);
             }
+            EnemyEventMediator.OnEnemyDead += (transform1 => CloseObject());
         }
 
         private void Update()
@@ -43,9 +45,14 @@ namespace TowerDefense.Script.DefenseMechanism
             }
             else
             {
-                transform.Translate(initialForward * speed * Time.deltaTime);
-                Invoke(nameof(DestroyObject), 3f);
+                transform.Translate(_initialForward * speed * Time.deltaTime);
+                Invoke(nameof(CloseObject), 3f);
             }
+        }
+
+        private void OnDestroy()
+        {
+            transform.DOComplete();
         }
 
         public void SettingWeapon(WeaponSettingSo weaponSettingSoSetting)
@@ -56,7 +63,7 @@ namespace TowerDefense.Script.DefenseMechanism
 
         private void ShotWeapon()
         {
-            Invoke(nameof(DestroyObject), 5f);
+            Invoke(nameof(CloseObject), 5f);
         }
 
         void ChaseEnemy()
@@ -88,20 +95,16 @@ namespace TowerDefense.Script.DefenseMechanism
             }
             catch (Exception)
             {
-                // DestroyObject();
                 if (setting.weaponSetting.weaponType == WeaponType.NotRotate)
                 {
                     transform.Translate(Vector3.right * speed * Time.deltaTime);
                 }
                 else
                 {
-                    // Vector3 initialForwardInWorldSpace = transform.TransformDirection(initialForward);
-                    // transform.position += initialForwardInWorldSpace * speed * Time.deltaTime;
-                    transform.DOScale(0, 0.5f).OnComplete(()=> DestroyObject());
-                    // transform.Translate( initialForwardInWorldSpace* speed * Time.deltaTime);
+                    transform.DOScale(0, 0.5f).OnComplete(CloseObject);
                 }
 
-                Invoke(nameof(DestroyObject), 3f);
+                Invoke(nameof(CloseObject), 3f);
             }
         }
 
@@ -109,14 +112,15 @@ namespace TowerDefense.Script.DefenseMechanism
         {
             if (other.CompareTag("Enemy"))
             {
-                DestroyObject();
+                CloseObject();
             }
         }
 
-        private void DestroyObject()
+        private void CloseObject()
         {
-            //TODO 需要更改成物件池的作法
-            Destroy(gameObject);
+            transform.DOComplete();
+            transform.localScale = Vector3.one;
+            gameObject.SetActive(false);
         }
     }
 }

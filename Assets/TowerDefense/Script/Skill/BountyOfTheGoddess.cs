@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace TowerDefense.Script.Skill
 {
-    [CreateAssetMenu(fileName = "BountyoftheGoddess", menuName = "Skills/BountyoftheGoddess")]
-    public class BountyoftheGoddess : Skill
+    [CreateAssetMenu(fileName = "BountyOfTheGoddess", menuName = "Skills/BountyOfTheGoddess")]
+    public class BountyOfTheGoddess : Skill
     {
         public override void ActivateSkill()
         {

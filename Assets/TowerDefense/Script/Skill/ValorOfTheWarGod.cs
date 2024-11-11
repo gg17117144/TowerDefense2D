@@ -2,8 +2,8 @@ using UnityEngine;
 
 namespace TowerDefense.Script.Skill
 {
-    [CreateAssetMenu(fileName = "ValoroftheWarGod", menuName = "Skills/ValoroftheWarGod")]
-    public class ValoroftheWarGod : Skill
+    [CreateAssetMenu(fileName = "ValorOfTheWarGod", menuName = "Skills/ValorOfTheWarGod")]
+    public class ValorOfTheWarGod : Skill
     {
         public override void ActivateSkill()
         {

@@ -1,4 +1,3 @@
-using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
 namespace TowerDefense.Script.Skill

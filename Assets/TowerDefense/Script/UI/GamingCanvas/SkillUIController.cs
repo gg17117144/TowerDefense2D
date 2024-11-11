@@ -13,8 +13,8 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [SerializeField] private GameObject group;
         [SerializeField] private List<Skill.Skill> skillList;
 
-        [SerializeField, ReadOnly] private int _canChooseSkillNum = 0;
-        [SerializeField, ReadOnly] private bool _isChooseSkill = false;
+        [SerializeField, ReadOnly] private int canChooseSkillNum = 0;
+        [SerializeField, ReadOnly] private bool isChooseSkill = false;
 
         private void Initialize()
         {
@@ -28,9 +28,9 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void Update()
         {
-            if (_canChooseSkillNum >= 1)
+            if (canChooseSkillNum >= 1)
             {
-                if (_isChooseSkill == false)
+                if (isChooseSkill == false)
                 {
                     StartCoroutine(nameof(StartInstantiateSkill));
                 }
@@ -40,8 +40,8 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [Button]
         public void InstantiateSkill()
         {
-            _canChooseSkillNum++;
-            if (_canChooseSkillNum == 1)
+            canChooseSkillNum++;
+            if (canChooseSkillNum == 1)
             {
                 StartCoroutine(nameof(StartInstantiateSkill));
             }
@@ -49,7 +49,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         IEnumerator StartInstantiateSkill()
         {
-            _isChooseSkill = true;
+            isChooseSkill = true;
             group.SetActive(true);
             group.transform.localScale = Vector3.one;
             group.GetComponent<Image>().DOFade(0, 0);
@@ -76,7 +76,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [Button]
         private void ClearGroup()
         {
-            _canChooseSkillNum--;
+            canChooseSkillNum--;
             for (int i = 0; i < group.transform.childCount; i++)
             {
                 var child = group.transform.GetChild(i);
@@ -104,11 +104,12 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
             group.transform.localScale = Vector3.one;
             //TODO 這裡需要更新實現邏輯
-            if (_canChooseSkillNum <= 0)
+            if (canChooseSkillNum <= 0)
             {
                 group.GetComponent<Image>().DOFade(0, 0.3f).OnComplete(() => group.SetActive(false));
             }
-            _isChooseSkill = false;
+
+            isChooseSkill = false;
         }
     }
 }

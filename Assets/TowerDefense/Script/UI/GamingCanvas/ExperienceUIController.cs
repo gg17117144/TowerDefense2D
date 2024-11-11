@@ -1,10 +1,8 @@
 using DG.Tweening;
-using TowerDefense.Script.EventCenter;
-using TowerDefense.Script.UI.GamingCanvas;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefense.Script.UI
+namespace TowerDefense.Script.UI.GamingCanvas
 {
     public class ExperienceUIController : MonoBehaviour
     {
@@ -13,8 +11,8 @@ namespace TowerDefense.Script.UI
 
         private void Initialize()
         {
-            ChangeExperienceBarValue(GameData.instance.gamingData.experience);
-            
+            ChangeExperienceBarValue(UserData.instance.gamingData.experience);
+
             // ExperienceEventCenter.AddListener(ExperienceEventType.UpdataExperience,ChangeExperienceBarValue);
             // ExperienceEventCenter.AddListener(ExperienceEventType.LeverUp,CallInstantiateSkill);
         }
@@ -23,7 +21,7 @@ namespace TowerDefense.Script.UI
         {
             Initialize();
         }
-        
+
         public void ChangeExperienceBarValue(float value)
         {
             experienceBar.DOKill();

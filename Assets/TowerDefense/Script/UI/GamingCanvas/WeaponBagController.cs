@@ -3,8 +3,8 @@ using DG.Tweening;
 using NaughtyAttributes;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
-using TowerDefense.Script.Hero;
 
 namespace TowerDefense.Script.UI.GamingCanvas
 {
@@ -17,17 +17,17 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [SerializeField] private Transform weaponBagButtonPos;
         [SerializeField] private Transform midPos;
         [SerializeField] private Transform bagBackGround;
-        [SerializeField] private Button backBotton;
+        [SerializeField] private Button backButton;
 
         private void Start()
         {
-            backBotton.onClick.AddListener(CloseWeaponBag);
+            backButton.onClick.AddListener(CloseWeaponBag);
             allWeaponSettingSoList = AllGameData.instance.allWeaponSettings;
         }
 
         private void ResetWeaponBagData()
         {
-            var bagWeaponDatas = GameData.instance.gamingData.bagWeaponData;
+            var bagWeaponDatas = UserData.instance.gamingData.bagWeaponData;
             foreach (var bagWeaponData in bagWeaponDatas)
             {
                 foreach (var allWeaponSetting in allWeaponSettingSoList)
@@ -37,7 +37,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
                         Debug.Log($"生成背包中的武器:{allWeaponSetting.name}");
                         prefab.transform.GetComponent<Image>().sprite = allWeaponSetting.weaponSetting.icon;
                         var instantiate = Instantiate(prefab, content.transform);
-                        instantiate.GetComponent<Button>().onClick.AddListener(()=>SetHeroWeapon(allWeaponSetting));
+                        instantiate.GetComponent<Button>().onClick.AddListener(() => SetHeroWeapon(allWeaponSetting));
                         instantiate.GetComponent<Button>().onClick.AddListener(CloseWeaponBag);
                         instantiate.transform.DOScale(1, 0.5f);
                     }
@@ -47,7 +47,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void SetHeroWeapon(WeaponSettingSo weaponSettingSo)
         {
-            Hero.Hero.Instance.SetWeapon(weaponSettingSo);
+            Hero.Hero.instance.SetWeapon(weaponSettingSo);
         }
 
         [Button]

@@ -1,8 +1,6 @@
-using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace TowerDefense.Script.UI.GamingCanvas
@@ -17,7 +15,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
         [SerializeField] private Button backButton;
         [SerializeField] private Button tempButton;
 
-        public void Initialize()
+        private void Initialize()
         {
             towerButton.onClick.AddListener(LevelUpTower);
             wallButton.onClick.AddListener(LevelUpWall);

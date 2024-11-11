@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefense.Script.UI
+namespace TowerDefense.Script.UI.GamingCanvas
 {
     public class HpUIController : MonoBehaviour
     {
