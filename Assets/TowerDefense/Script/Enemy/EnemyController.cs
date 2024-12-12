@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
@@ -51,6 +52,11 @@ namespace TowerDefense.Script.Enemy
             audioSource.Play();
             
             transform.GetComponent<SpriteRenderer>().color = Color.white;
+        }
+
+        private void OnDisable()
+        {
+            StopAllCoroutines();
         }
 
         void TempDead()

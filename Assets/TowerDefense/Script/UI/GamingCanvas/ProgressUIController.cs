@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using NaughtyAttributes;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,13 +10,10 @@ namespace TowerDefense.Script.UI.GamingCanvas
     public class ProgressUIController : MonoBehaviour
     {
         [SerializeField] private TextMeshProUGUI progressText;
-        [SerializeField] private Image progressBar;
-
-        [SerializeField] private Transform handleRightPos;
-        [SerializeField] private Transform handleLeftPos;
-        [SerializeField] private Image progressHandle;
+        [SerializeField] private Slider progressBar;
 
         [SerializeField] private int fakeTime = 1;
+        [SerializeField] private int fakeRound = 1;
 
         private void Initialize()
         {
@@ -29,54 +28,46 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void Start()
         {
-            Invoke(nameof(StartWaves), 7f);
+            Invoke(nameof(StartWaves), 0f);
+        }
+
+        private void Update()
+        {
+            if (fakeTime >= progressBar.maxValue)
+            {
+                fakeTime = 0; 
+                ChangeProgressBarValue(progressBar.maxValue);
+                fakeRound++;
+                ChangeProgressText(fakeRound);
+            }
         }
 
         public void StartWaves()
         {
-            TempTime();
-            InvokeRepeating(nameof(FakeTime), 60f, 60f);
+            //TODO 應該改掉
+            InvokeRepeating(nameof(FakeTime), 0f, 1f);
         }
 
         void FakeTime()
         {
-            progressBar.DOKill();
-            progressHandle.transform.DOKill();
             fakeTime++;
-            ChangeProgressText(fakeTime);
-            progressBar.DOFillAmount(1, 0.5f);
-            progressHandle.transform.DOMove(CalculatePos(1), 0.5f).OnComplete((TempTime));
-            GamingUIHandler.instance.ExperienceUIController.CallInstantiateSkill(0);
-        }
-
-        void TempTime()
-        {
-            progressBar.DOFillAmount(0, 60f);
-            progressHandle.transform.DOMove(CalculatePos(0), 60f);
+            ChangeProgressBarValue(fakeTime);
+            // GamingUIHandler.instance.ExperienceUIController.CallInstantiateSkill(0);
         }
 
         public void ChangeProgressBarValue(float value)
         {
-            progressBar.DOKill();
-            progressHandle.DOKill();
-            progressBar.DOFillAmount(value, 0.5f);
-            progressHandle.transform.DOMove(CalculatePos(value), 0.5f);
+            // 計算目標值
+            var targetValue = progressBar.maxValue - value;
+            // 使用 DOValue 補間到目標值，設置動畫時間和緩動效果
+            progressBar.DOValue(targetValue, 0.5f) // 0.5f 是動畫持續時間，可根據需要調整
+                .SetEase(Ease.OutQuad); // 使用平滑的緩動效果（Ease.OutQuad）
         }
 
         public void ChangeProgressText(int value)
         {
             //TODO 看看是否要加入多國語系
             progressText.text = $"進攻波次：{value}";
-        }
-
-        private Vector3 CalculatePos(float value)
-        {
-            var position = handleLeftPos.position;
-            var differenceX = handleRightPos.position.x - position.x;
-            var currentLocation = (differenceX * value) + position.x;
-            var transformPosition = progressHandle.transform.position;
-            Vector3 currentLocationVector3 = new Vector3(currentLocation, transformPosition.y, transformPosition.z);
-            return currentLocationVector3;
         }
     }
 }
