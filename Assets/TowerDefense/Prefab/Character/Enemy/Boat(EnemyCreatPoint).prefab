@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1112969682340496915}
   - component: {fileID: 3144693983419615596}
   m_Layer: 0
-  m_Name: Boat
+  m_Name: Boat(EnemyCreatPoint)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -53,6 +53,9 @@ SpriteRenderer:
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 0
   m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -90,7 +93,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &2154513683451976079
 Animator:
-  serializedVersion: 5
+  serializedVersion: 7
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -104,6 +107,7 @@ Animator:
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -121,6 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fecce2c499636874aa5ae6d15a315d0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difference: 0
 --- !u!114 &1112969682340496915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,6 +141,7 @@ MonoBehaviour:
   enemySoList:
   - {fileID: 11400000, guid: c8f7e260ab7f4de4183486e51af8676b, type: 2}
   - {fileID: 11400000, guid: d0420524e55e08747a9935d6bebfa4e9, type: 2}
+  - {fileID: 11400000, guid: 388a9ddf56cc73948a319d53bd34e8e7, type: 2}
 --- !u!114 &3144693983419615596
 MonoBehaviour:
   m_ObjectHideFlags: 0
