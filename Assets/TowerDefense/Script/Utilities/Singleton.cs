@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace TowerDefense.Script.Utilities
@@ -13,6 +14,7 @@ namespace TowerDefense.Script.Utilities
 
         private static object _lock = new object();
 
+        [Obsolete("Obsolete")]
         public static T Instance
         {
             get
