@@ -1,12 +1,15 @@
+using System;
+using TowerDefense.Prefab.Script.ButtonClickAudio;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace TowerDefense.Prefab.Script.ButtonClickAudio
+namespace TowerDefense.Script.ButtonClickAudio
 {
-    public class AddButtonCilp : MonoBehaviour
+    public class AddButtonClip : MonoBehaviour
     {
         public AudioClip clickSound;
 
+        [Obsolete("Obsolete")]
         void Start()
         {
             Button[] buttons = FindObjectsOfType<Button>();
