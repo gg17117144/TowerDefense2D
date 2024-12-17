@@ -1,9 +1,10 @@
+using TowerDefense.Script.Utilities;
 using UnityEngine;
 using UnityHFSM;
 
 namespace TowerDefense.Script
 {
-    public class GameManager : MonoBehaviour
+    public class GameManager : Singleton<GameManager>
     {
         private StateMachine _fsm;
 
