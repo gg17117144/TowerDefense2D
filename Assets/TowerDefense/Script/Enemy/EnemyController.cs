@@ -123,17 +123,26 @@ namespace TowerDefense.Script.Enemy
             OpenDeadPrefab();
         }
 
+        /// <summary>
+        /// 撥放死亡音效
+        /// </summary>
         private void DamageSound()
         {
             audioSource.clip = hurtSound;
             audioSource.Play();
         }
-
+        
+        /// <summary>
+        /// 播放死亡動畫
+        /// </summary>
         private void DamageAnimation()
         {
             _animator.Play("Dead");
         }
 
+        /// <summary>
+        /// 觸發死亡事件
+        /// </summary>
         private void DeadEvent()
         {
             MoneyEventMediator.MoneyEnemyDeathNotify(enemySettingData.bounty, enemySettingData.loot);
@@ -141,12 +150,18 @@ namespace TowerDefense.Script.Enemy
             EnemyEventMediator.DoEnemyDead(transform);
         }
 
+        /// <summary>
+        /// 死亡重製物件
+        /// </summary>
         private void DeadReset()
         {
             _fsm.RequestStateChange("Dead");
             transform.gameObject.SetActive(false);
         }
 
+        /// <summary>
+        /// 開啟or生成殘留物
+        /// </summary>
         private void OpenDeadPrefab()
         {
             if (_deadPrefab == null)
