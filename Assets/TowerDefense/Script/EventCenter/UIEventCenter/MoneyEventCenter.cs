@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace TowerDefense.Script.EventCenter
+namespace TowerDefense.Script.EventCenter.UIEventCenter
 {
     public enum MoneyEventType
     {

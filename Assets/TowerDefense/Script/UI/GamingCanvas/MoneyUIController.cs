@@ -1,5 +1,5 @@
 using TMPro;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.UIEventCenter;
 using UnityEngine;
 
 namespace TowerDefense.Script.UI.GamingCanvas
