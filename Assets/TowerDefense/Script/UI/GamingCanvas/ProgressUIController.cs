@@ -12,10 +12,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
     {
         [SerializeField] private TextMeshProUGUI progressText;
         [SerializeField] private Slider progressBar;
-
-        [SerializeField] private int fakeTime = 1;
-        [SerializeField] private int fakeRound = 1;
-
+        
         private void Initialize()
         {
             ChangeProgressText(1);
