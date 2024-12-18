@@ -1,4 +1,5 @@
 using NaughtyAttributes;
+using TowerDefense.Script.EventCenter.UIEventCenter;
 using TowerDefense.Script.UI.GamingCanvas;
 using UnityEngine;
 
@@ -25,8 +26,7 @@ namespace TowerDefense.Script.TestScript
         [Button]
         void TestProgressUIController()
         {
-            gamingUIHandler.ProgressUIController.ChangeProgressText(progressTextValue);
-            gamingUIHandler.ProgressUIController.ChangeProgressBarValue(progressBarValue);
+            ProgressUIEventMediator.DoProgressChange(progressTextValue, progressBarValue);
         }
 
         [BoxGroup("金錢&擊殺數量")] [SerializeField] private int coinValue;
