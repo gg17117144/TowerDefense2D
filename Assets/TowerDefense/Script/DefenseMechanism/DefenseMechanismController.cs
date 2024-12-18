@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
@@ -31,7 +31,7 @@ namespace TowerDefense.Script.DefenseMechanism
                 _stopTime = 0;
             }
         }
-        
+
         private void RemoveEnemyList(Transform enemy)
         {
             enemyList.Remove(enemy);
@@ -49,6 +49,7 @@ namespace TowerDefense.Script.DefenseMechanism
                         enemyList.Remove(enemy);
                     }
                 }
+
                 enemyList.Add(other.transform);
             }
         }
@@ -70,13 +71,14 @@ namespace TowerDefense.Script.DefenseMechanism
                     Quaternion.identity, _weaponPool);
                 WeaponController weaponController = weaponInstantiate.AddComponent<WeaponController>();
             }
+
             // 設置物件的位置和旋轉
             weaponInstantiate.transform.position = shootTransformPosition;
             weaponInstantiate.transform.rotation = Quaternion.identity; // 你可以根據需要設置特定的旋轉
 
             weaponInstantiate.GetComponent<WeaponController>().Initialize(weaponSo, target);
         }
-        
+
         private GameObject GetWeaponFromPool()
         {
             foreach (Transform weapon in _weaponPool)

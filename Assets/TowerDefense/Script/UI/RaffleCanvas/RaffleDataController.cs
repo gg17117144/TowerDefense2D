@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using NaughtyAttributes;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
@@ -54,7 +54,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
                     doProbability = DoProbability(40);
                     Debug.Log($"doProbability:{doProbability}");
                 }
-                
+
                 var weaponSettingIcon = weaponSettingSoList[doProbability].weaponSetting.icon;
                 _getWeaponIcon.Add(weaponSettingIcon);
                 _getWeaponName.Add(weaponSettingSoList[doProbability].weaponSetting.name);

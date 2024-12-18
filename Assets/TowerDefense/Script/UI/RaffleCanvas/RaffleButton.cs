@@ -1,8 +1,6 @@
-using System;
 using DG.Tweening;
 using NaughtyAttributes;
-using TowerDefense.Script.EventCenter;
-using Unity.VisualScripting;
+using TowerDefense.Script.EventCenter.EventMediator;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +14,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
         [SerializeField] private Button backButton;
 
         [SerializeField] private RaffleDataController raffleDataController;
+
         private void Start()
         {
             StartLoopAnimation();
@@ -36,7 +35,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
             trustYouSelfButton.onClick.AddListener(DoGachaTrustYouSelf);
             backButton.onClick.AddListener(CloseTheRaffleCanvas);
         }
-        
+
         void DoGacha1Time()
         {
             if (UserData.instance.gamingData.loot >= 100)
@@ -50,7 +49,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
                 Debug.Log($"Loot不夠");
             }
         }
-        
+
         void DoGacha10Time()
         {
             if (UserData.instance.gamingData.loot >= 1000)
@@ -64,7 +63,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
                 Debug.Log($"Loot不夠");
             }
         }
-        
+
         void DoGachaTrustYouSelf()
         {
             if (UserData.instance.gamingData.loot >= 100)
@@ -78,7 +77,7 @@ namespace TowerDefense.Script.UI.RaffleCanvas
                 Debug.Log($"Loot不夠");
             }
         }
-        
+
         [Button]
         void CloseTheRaffleCanvas()
         {

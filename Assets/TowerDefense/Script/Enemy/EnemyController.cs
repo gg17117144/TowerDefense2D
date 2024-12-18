@@ -1,11 +1,12 @@
-using System;
 using System.Collections;
 using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 using UnityHFSM;
+using ExperienceEventMediator = TowerDefense.Script.EventCenter.EventMediator.ExperienceEventMediator;
+using MoneyEventMediator = TowerDefense.Script.EventCenter.EventMediator.MoneyEventMediator;
 
 namespace TowerDefense.Script.Enemy
 {
@@ -50,7 +51,7 @@ namespace TowerDefense.Script.Enemy
             audioSource = GetComponent<AudioSource>();
             audioSource.clip = walkSound;
             audioSource.Play();
-            
+
             transform.GetComponent<SpriteRenderer>().color = Color.white;
         }
 
@@ -131,7 +132,7 @@ namespace TowerDefense.Script.Enemy
             audioSource.clip = hurtSound;
             audioSource.Play();
         }
-        
+
         /// <summary>
         /// 播放死亡動畫
         /// </summary>

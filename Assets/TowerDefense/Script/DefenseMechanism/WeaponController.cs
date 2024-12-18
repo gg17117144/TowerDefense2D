@@ -1,6 +1,6 @@
 using System;
 using DG.Tweening;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 
@@ -34,6 +34,7 @@ namespace TowerDefense.Script.DefenseMechanism
                 transform.DORotate(new Vector3(0, 0, -360), 0.5f, RotateMode.WorldAxisAdd)
                     .SetLoops(-1, LoopType.Incremental);
             }
+
             EnemyEventMediator.OnEnemyDead += (transform1 => CloseObject());
         }
 

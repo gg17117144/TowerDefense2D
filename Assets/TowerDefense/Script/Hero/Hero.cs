@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using TowerDefense.Script.DefenseMechanism;
-using TowerDefense.Script.EventCenter;
+using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -65,10 +65,11 @@ namespace TowerDefense.Script.Hero
                         enemyList.Remove(enemy);
                     }
                 }
+
                 enemyList.Add(other.transform);
             }
         }
-        
+
         private void Defense(Transform target)
         {
             _animator.Play("Attack");
@@ -87,6 +88,7 @@ namespace TowerDefense.Script.Hero
                     Quaternion.identity, _weaponPool);
                 weaponInstantiate.AddComponent<WeaponController>();
             }
+
             // 設置物件的位置和旋轉
             weaponInstantiate.GetComponent<SpriteRenderer>().sprite = weaponSo.weaponSetting.sprite;
             weaponInstantiate.transform.position = shootTransformPosition;
