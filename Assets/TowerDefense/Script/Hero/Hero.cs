@@ -88,6 +88,7 @@ namespace TowerDefense.Script.Hero
                 weaponInstantiate.AddComponent<WeaponController>();
             }
             // 設置物件的位置和旋轉
+            weaponInstantiate.GetComponent<SpriteRenderer>().sprite = weaponSo.weaponSetting.sprite;
             weaponInstantiate.transform.position = shootTransformPosition;
             weaponInstantiate.transform.rotation = Quaternion.identity; // 你可以根據需要設置特定的旋轉
 

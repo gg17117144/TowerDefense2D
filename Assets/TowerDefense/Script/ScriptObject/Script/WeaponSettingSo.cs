@@ -30,6 +30,7 @@ namespace TowerDefense.Script.ScriptObject.Script
         [Required] public Sprite icon;
         [Required] public int damage;
         [Required] public float speed;
+        [Required] public Sprite sprite;
         [Required] public GameObject prefab;
         [Required] public WeaponType weaponType;
         [Required] public WeaponLevel weaponLevel;
