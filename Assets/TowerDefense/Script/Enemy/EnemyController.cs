@@ -99,11 +99,14 @@ namespace TowerDefense.Script.Enemy
         private void DamageTaken(int damageAmount)
         {
             hp -= damageAmount;
-            DamageEffect();
-            //TODO 需要跳出UI字樣
             if (hp <= 0)
             {
                 Dead();
+            }
+            else
+            {
+                //TODO 需要跳出UI字樣
+                DamageEffect();
             }
         }
 
