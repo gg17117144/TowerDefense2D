@@ -17,5 +17,7 @@ MonoBehaviour:
     icon: {fileID: 21300000, guid: 46274abcc7039fd4e916b7daf1fac7db, type: 3}
     damage: 20
     speed: 5
+    sprite: {fileID: 21300000, guid: 1e0ce3ef4ae151347b37d2c15d672778, type: 3}
     prefab: {fileID: 2189996428755576316, guid: 904171d5031c04e46a950ea3bfe2c32a, type: 3}
     weaponType: 0
+    weaponLevel: 0
