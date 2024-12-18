@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using NaughtyAttributes;
 using TMPro;
+using TowerDefense.Script.EventCenter.UIEventCenter;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,36 +27,23 @@ namespace TowerDefense.Script.UI.GamingCanvas
             Initialize();
         }
 
-        private void Start()
+        private void OnEnable()
         {
-            Invoke(nameof(StartWaves), 0f);
+            ProgressUIEventMediator.OnProgressChange += ChangeProgress;
         }
 
-        private void Update()
+        private void OnDisable()
         {
-            if (fakeTime >= progressBar.maxValue)
-            {
-                fakeTime = 0; 
-                ChangeProgressBarValue(progressBar.maxValue);
-                fakeRound++;
-                ChangeProgressText(fakeRound);
-            }
+            ProgressUIEventMediator.OnProgressChange -= ChangeProgress;
         }
 
-        public void StartWaves()
+        private void ChangeProgress(int roundValue, float roundTime)
         {
-            //TODO 應該改掉
-            InvokeRepeating(nameof(FakeTime), 0f, 1f);
+            ChangeProgressText(roundValue);
+            ChangeProgressBarValue(roundTime);
         }
 
-        void FakeTime()
-        {
-            fakeTime++;
-            ChangeProgressBarValue(fakeTime);
-            // GamingUIHandler.instance.ExperienceUIController.CallInstantiateSkill(0);
-        }
-
-        public void ChangeProgressBarValue(float value)
+        private void ChangeProgressBarValue(float value)
         {
             // 計算目標值
             var targetValue = progressBar.maxValue - value;
@@ -64,7 +52,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
                 .SetEase(Ease.OutQuad); // 使用平滑的緩動效果（Ease.OutQuad）
         }
 
-        public void ChangeProgressText(int value)
+        private void ChangeProgressText(int value)
         {
             //TODO 看看是否要加入多國語系
             progressText.text = $"進攻波次：{value}";

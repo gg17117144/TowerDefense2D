@@ -4,9 +4,9 @@ namespace TowerDefense.Script.EventCenter.UIEventCenter
 {
     public static class ProgressUIEventMediator
     {
-        public static event Action<int, int> OnProgressChange;
+        public static event Action<int, float> OnProgressChange;
 
-        public static void DoProgressChange(int roundValue, int roundTime)
+        public static void DoProgressChange(int roundValue, float roundTime)
         {
             OnProgressChange?.Invoke(roundValue, roundTime);
         }
