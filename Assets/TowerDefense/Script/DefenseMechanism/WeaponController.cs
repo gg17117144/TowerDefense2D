@@ -2,6 +2,7 @@ using System;
 using DG.Tweening;
 using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace TowerDefense.Script.DefenseMechanism
@@ -15,6 +16,8 @@ namespace TowerDefense.Script.DefenseMechanism
         public int DamageAmount => damageAmount;
         [SerializeField] private int damageAmount;
         private Vector3 _initialForward; // 物体的初始前方向
+        private Rigidbody2D _rigidbody2D;
+        private SpriteRenderer _spriteRenderer;
 
         public void Initialize(WeaponSettingSo weaponSo, Transform targetTransform)
         {
@@ -26,16 +29,25 @@ namespace TowerDefense.Script.DefenseMechanism
             _initialForward = transform.forward;
         }
 
+        private void Awake()
+        {
+            _rigidbody2D = GetComponent<Rigidbody2D>();
+            _spriteRenderer = GetComponent<SpriteRenderer>();
+        }
+
         private void Start()
         {
             if (setting.weaponSetting.weaponType == WeaponType.Rotate)
-            {
-                // Debug.Log("應該有要旋轉");
                 transform.DORotate(new Vector3(0, 0, -360), 0.5f, RotateMode.WorldAxisAdd)
                     .SetLoops(-1, LoopType.Incremental);
-            }
+            
+            EnemyEventMediator.OnEnemyDead += ContinuousFlight;
+        }
 
-            EnemyEventMediator.OnEnemyDead += (transform1 => CloseObject());
+        private void OnDisable()
+        {
+            transform.DOComplete();
+            CancelInvoke();
         }
 
         private void Update()
@@ -50,12 +62,7 @@ namespace TowerDefense.Script.DefenseMechanism
                 Invoke(nameof(CloseObject), 3f);
             }
         }
-
-        private void OnDestroy()
-        {
-            transform.DOComplete();
-        }
-
+        
         public void SettingWeapon(WeaponSettingSo weaponSettingSoSetting)
         {
             setting = weaponSettingSoSetting;
@@ -121,7 +128,15 @@ namespace TowerDefense.Script.DefenseMechanism
         {
             transform.DOComplete();
             transform.localScale = Vector3.one;
+            _rigidbody2D.linearVelocity = Vector2.zero;
             gameObject.SetActive(false);
         }
+
+        private void ContinuousFlight(Transform targetTransform)
+        {
+            Vector3 directionToTarget = (targetTransform.position - transform.position).normalized;
+            _rigidbody2D.AddForce(directionToTarget * speed * Time.deltaTime * 50f, ForceMode2D.Impulse);
+            target = null;
+        } 
     }
 }
