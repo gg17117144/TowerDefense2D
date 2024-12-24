@@ -10,11 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 4479977125947016104}
   - component: {fileID: 8384244479170374876}
-  - component: {fileID: 9162472598612991482}
-  - component: {fileID: 2682631068589859954}
+  - component: {fileID: -4732474432014595403}
+  - component: {fileID: -4445474570708164635}
   - component: {fileID: 8940758299521959844}
+  - component: {fileID: -4520709617598185479}
   m_Layer: 0
-  m_Name: Fellling Axe
+  m_Name: HeroWeapon
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -79,7 +80,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: b4f7f9a992ca4c143aa434d1b596aa0e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: a763bc4ce3b939b4181352826378264e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -90,7 +91,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &9162472598612991482
+--- !u!58 &-4732474432014595403
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -124,9 +125,9 @@ CircleCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0.063284755}
-  m_Radius: 0.67
---- !u!50 &2682631068589859954
+  m_Offset: {x: 0, y: 0}
+  m_Radius: 0.325
+--- !u!50 &-4445474570708164635
 Rigidbody2D:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -166,3 +167,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difference: 0
+--- !u!114 &-4520709617598185479
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2189996428755576316}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bee1a1a52e69fb546988ed1f9c47552b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  setting: {fileID: 0}
+  target: {fileID: 0}
+  speed: 0
+  damageAmount: 0
