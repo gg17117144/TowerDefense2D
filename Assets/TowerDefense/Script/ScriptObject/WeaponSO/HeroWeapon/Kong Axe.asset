@@ -21,3 +21,5 @@ MonoBehaviour:
     prefab: {fileID: 2189996428755576316, guid: 2b97faa4aa1cb624a8d9f37c47e84c99, type: 3}
     weaponType: 0
     weaponLevel: 0
+    colliderOffset: {x: 0, y: 0.063284755}
+    colliderRadius: 1.37

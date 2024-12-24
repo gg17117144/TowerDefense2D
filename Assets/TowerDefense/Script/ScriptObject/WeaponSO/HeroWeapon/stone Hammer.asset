@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: daf682b990e0f984da280a616c8c0c55, type: 3}
-  m_Name: stone Hammer
+  m_Name: Stone Hammer
   m_EditorClassIdentifier: 
   weaponSetting:
-    name: stone Hammer
+    name: Stone Hammer
     icon: {fileID: 21300000, guid: a418909322b985b42afd5f4d1fdbe55d, type: 3}
     damage: 40
     speed: 2.5
@@ -21,3 +21,5 @@ MonoBehaviour:
     prefab: {fileID: 2189996428755576316, guid: 1b27be183029d104b85e08e783d8b99d, type: 3}
     weaponType: 0
     weaponLevel: 0
+    colliderOffset: {x: 0, y: 0.063284755}
+    colliderRadius: 0.68
