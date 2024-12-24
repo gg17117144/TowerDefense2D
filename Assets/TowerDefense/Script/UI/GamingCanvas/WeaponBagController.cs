@@ -34,7 +34,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
                 {
                     if (allWeaponSetting.name == bagWeaponData)
                     {
-                        Debug.Log($"生成背包中的武器:{allWeaponSetting.name}");
+                        // Debug.Log($"生成背包中的武器:{allWeaponSetting.name}");
                         prefab.transform.GetComponent<Image>().sprite = allWeaponSetting.weaponSetting.icon;
                         var instantiate = Instantiate(prefab, content.transform);
                         instantiate.GetComponent<Button>().onClick.AddListener(() => SetHeroWeapon(allWeaponSetting));
