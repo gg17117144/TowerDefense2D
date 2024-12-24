@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using NaughtyAttributes;
 using TowerDefense.Script.DefenseMechanism;
 using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
@@ -12,6 +13,7 @@ namespace TowerDefense.Script.Hero
     {
         public static Hero instance;
         [SerializeField] private HeroSettingSo heroSetting;
+        [SerializeField] private GameObject heroWeaponPrefab;
         [SerializeField] public List<Transform> enemyList = new List<Transform>();
         private float _stopTime = 0;
         private Transform _weaponPool;
@@ -32,6 +34,7 @@ namespace TowerDefense.Script.Hero
             EnemyEventMediator.OnEnemyDead += RemoveEnemyList;
         }
 
+        [Button]
         private void Update()
         {
             _stopTime += Time.deltaTime;
@@ -57,7 +60,7 @@ namespace TowerDefense.Script.Hero
         {
             if (other.CompareTag(nameof(Enemy)))
             {
-                Debug.Log("探索到敵人 新增敵人到清除列表中");
+                // Debug.Log("探索到敵人 新增敵人到清除列表中");
                 foreach (var enemy in enemyList.ToList())
                 {
                     if (ReferenceEquals(enemy, other.transform))
@@ -80,17 +83,12 @@ namespace TowerDefense.Script.Hero
         {
             var weaponSo = heroSetting.defenseMechanismSetting.weaponSettingSo;
             var shootTransformPosition = _shootTransform.position;
-            var weaponSettingPrefab = weaponSo.weaponSetting.prefab;
             GameObject weaponInstantiate = GetWeaponFromPool();
-            if (weaponInstantiate == null)
-            {
-                weaponInstantiate = Instantiate(weaponSettingPrefab, shootTransformPosition,
-                    Quaternion.identity, _weaponPool);
-                weaponInstantiate.AddComponent<WeaponController>();
-            }
 
             // 設置物件的位置和旋轉
             weaponInstantiate.GetComponent<SpriteRenderer>().sprite = weaponSo.weaponSetting.sprite;
+            weaponInstantiate.GetComponent<Collider2D>().offset = weaponSo.weaponSetting.colliderOffset;
+            weaponInstantiate.GetComponent<CircleCollider2D>().radius = weaponSo.weaponSetting.colliderRadius;
             weaponInstantiate.transform.position = shootTransformPosition;
             weaponInstantiate.transform.rotation = Quaternion.identity; // 你可以根據需要設置特定的旋轉
 
@@ -108,9 +106,8 @@ namespace TowerDefense.Script.Hero
                     return weapon.gameObject; // 返回這個物件
                 }
             }
-
-            // 如果沒有可用物件，返回 null 或考慮擴充池
-            return null;
+            return Instantiate(heroWeaponPrefab, _shootTransform.position,
+                Quaternion.identity, _weaponPool);
         }
 
         public void SetWeapon(WeaponSettingSo weaponSettingSo)
