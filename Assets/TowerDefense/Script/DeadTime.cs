@@ -4,12 +4,12 @@ namespace TowerDefense.Script
 {
     public class DeadTime : MonoBehaviour
     {
-        void Start()
+        void OnEnable()
         {
-            Invoke(nameof(Destroy), 1f);
+            Invoke(nameof(CloseObject), 1f);
         }
 
-        private void Destroy()
+        private void CloseObject()
         {
             gameObject.SetActive(false);
         }
