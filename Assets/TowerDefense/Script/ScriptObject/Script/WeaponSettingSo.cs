@@ -27,13 +27,15 @@ namespace TowerDefense.Script.ScriptObject.Script
     public class WeaponSetting
     {
         [Required] public string name;
-        [Required] public Sprite icon;
+        [ShowAssetPreview][Required] public Sprite icon;
         [Required] public int damage;
         [Required] public float speed;
-        [Required] public Sprite sprite;
+        [ShowAssetPreview][Required] public Sprite sprite;
         [Required] public GameObject prefab;
         [Required] public WeaponType weaponType;
         [Required] public WeaponLevel weaponLevel;
+        [Required] public Vector2 colliderOffset;
+        [Required] public float colliderRadius;
     }
 
     [CreateAssetMenu(fileName = "WeaponSettingSo", menuName = "TowerDefense2D/Create WeaponSo")]
@@ -46,10 +48,13 @@ namespace TowerDefense.Script.ScriptObject.Script
         void AutoMatch()
         {
             Debug.Log($"weaponSetting.name:{weaponSetting.name}");
-            var autoMatchIcon = AutoMatchIcon(weaponSetting.name);
-            var autoMatchPrefab = AutoMatchPrefab(weaponSetting.name);
-            weaponSetting.icon = autoMatchIcon;
-            weaponSetting.prefab = autoMatchPrefab;
+            // var autoMatchIcon = AutoMatchIcon(weaponName);
+            // var autoMatchPrefab = AutoMatchPrefab(weaponName);
+            // var autoMatchSprite = AutoMatchSprite(weaponName);
+            weaponSetting.icon = AutoMatchIcon(weaponSetting.name);
+            weaponSetting.sprite = AutoMatchSprite(weaponSetting.name);
+            weaponSetting.prefab = AutoMatchPrefab(weaponSetting.name);
+            AutoMatchCollider(weaponSetting.prefab);
         }
 
         Sprite AutoMatchIcon(string weaponName)
@@ -65,6 +70,26 @@ namespace TowerDefense.Script.ScriptObject.Script
                 {
                     Debug.Log("找到了相對應的Sprite");
                     return prefab;
+                }
+            }
+
+            Debug.Log("沒有找到相對應的圖示");
+            return null;
+        }
+        
+        Sprite AutoMatchSprite(string weaponName)
+        {
+            string folderPath = "Assets/TowerDefense/Sprite/Weapon";
+            string[] prefabPaths = AssetDatabase.FindAssets("t:Sprite", new[] { folderPath });
+            foreach (var path in prefabPaths)
+            {
+                string assetPath = AssetDatabase.GUIDToAssetPath(path);
+                Sprite sprite = AssetDatabase.LoadAssetAtPath<Sprite>(assetPath);
+                // !sprite.name.Contains("frame")是為了不尋找frame icon的用途
+                if (sprite.name.Contains(weaponName) && !sprite.name.Contains("frame"))
+                {
+                    Debug.Log("找到了相對應的Sprite");
+                    return sprite;
                 }
             }
 
@@ -90,6 +115,14 @@ namespace TowerDefense.Script.ScriptObject.Script
 
             Debug.Log("沒有找到相對應的物件");
             return null;
+        }
+
+        void AutoMatchCollider(GameObject prefab)
+        {
+            if (!prefab)
+                return;
+            weaponSetting.colliderOffset = prefab.GetComponent<Collider2D>().offset;
+            weaponSetting.colliderRadius = prefab.GetComponent<CircleCollider2D>().radius;
         }
 #endif
     }
