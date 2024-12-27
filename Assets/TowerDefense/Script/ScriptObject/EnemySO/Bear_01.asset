@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7720056c3175b724e9973d79e08a7ee5, type: 3}
-  m_Name: Pirate_03
+  m_Name: Bear_01
   m_EditorClassIdentifier: 
   hp: 200
   moveSpeed: 0.007
