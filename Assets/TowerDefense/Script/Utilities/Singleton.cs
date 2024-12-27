@@ -13,8 +13,7 @@ namespace TowerDefense.Script.Utilities
         private static T _instance;
 
         private static object _lock = new object();
-
-        [Obsolete("Obsolete")]
+        
         public static T Instance
         {
             get
