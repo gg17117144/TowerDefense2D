@@ -30,9 +30,11 @@ namespace TowerDefense.Script.Utilities
                 {
                     if (_instance == null)
                     {
+#pragma warning disable CS0618 // Type or member is obsolete
                         _instance = (T)FindObjectOfType(typeof(T));
-
+                        
                         if (FindObjectsOfType(typeof(T)).Length > 1)
+#pragma warning restore CS0618 // Type or member is obsolete
                         {
                             Debug.LogError("[Singleton] Something went really wrong " +
                                            " - there should never be more than 1 singleton!" +
@@ -84,7 +86,7 @@ namespace TowerDefense.Script.Utilities
         ///   even after stopping playing the Application. Really bad!
         /// So, this was made to be sure we're not creating that buggy ghost object.
         /// </summary>
-        public void OnDestroy()
+        protected virtual void OnDestroy()
         {
             if (IsDontDestroyOnLoad())
             {
