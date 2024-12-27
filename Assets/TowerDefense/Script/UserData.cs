@@ -2,14 +2,14 @@ using System.Collections.Generic;
 using NaughtyAttributes;
 using TowerDefense.Script.EventCenter.EventMediator;
 using TowerDefense.Script.ScriptObject.Script;
+using TowerDefense.Script.Utilities;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace TowerDefense.Script
 {
-    public class UserData : MonoBehaviour
+    public class UserData : Singleton<UserData>
     {
-        public static UserData instance;
         [SerializeField] private GameDataSetting gameData;
         [SerializeField] public GameDataSetting gamingData;
 
@@ -17,7 +17,6 @@ namespace TowerDefense.Script
 
         private void Awake()
         {
-            instance = this;
             gamingData = gameData;
         }
 
