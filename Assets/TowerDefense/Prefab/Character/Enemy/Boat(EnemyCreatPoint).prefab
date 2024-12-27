@@ -142,6 +142,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c8f7e260ab7f4de4183486e51af8676b, type: 2}
   - {fileID: 11400000, guid: d0420524e55e08747a9935d6bebfa4e9, type: 2}
   - {fileID: 11400000, guid: 388a9ddf56cc73948a319d53bd34e8e7, type: 2}
+  eliteEnemySoList:
+  - {fileID: 11400000, guid: 66e7fd80804c5cb43802ffcbc305a6af, type: 2}
 --- !u!114 &3144693983419615596
 MonoBehaviour:
   m_ObjectHideFlags: 0

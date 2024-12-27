@@ -18,7 +18,7 @@ GameObject:
   - component: {fileID: 2240379450318092185}
   - component: {fileID: 7026575143098701429}
   m_Layer: 0
-  m_Name: Pirate03
+  m_Name: Bear01
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -340,12 +340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a38bf981b5439645b4d3cc389c36f3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySettingData: {fileID: 11400000, guid: c8f7e260ab7f4de4183486e51af8676b, type: 2}
+  enemySettingData: {fileID: 11400000, guid: 388a9ddf56cc73948a319d53bd34e8e7, type: 2}
   audioSource: {fileID: 2729898923812901525}
   walkSound: {fileID: 8300000, guid: 9536c3384e6c9a645b720ef7dcd93c60, type: 3}
   hurtSound: {fileID: 8300000, guid: 5d339d5802517c240bc2840361c34085, type: 3}
   deadPrefab: {fileID: 5574959835476493036, guid: 073830212ea3bd74ba884225f0c15a68, type: 3}
-  _hp: 0
+  hp: 0
 --- !u!1 &1956297485378417008
 GameObject:
   m_ObjectHideFlags: 0
