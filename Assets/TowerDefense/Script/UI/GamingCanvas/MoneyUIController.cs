@@ -11,8 +11,8 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void Initialize()
         {
-            ChangeCoinTextValue(UserData.instance.gamingData.money);
-            ChangeLootTextValue(UserData.instance.gamingData.loot);
+            ChangeCoinTextValue(UserData.Instance.gamingData.money);
+            ChangeLootTextValue(UserData.Instance.gamingData.loot);
 
             MoneyEventCenter.AddListener(MoneyEventType.AddMoney, ChangeCoinTextValue);
             MoneyEventCenter.AddListener(MoneyEventType.AddLoot, ChangeLootTextValue);

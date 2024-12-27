@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,10 @@ namespace TowerDefense.Script.UI.GamingCanvas
     {
         [SerializeField] private Image experienceBar;
         [SerializeField] private SkillUIController skillUIController;
-
+        
         private void Initialize()
         {
-            ChangeExperienceBarValue(UserData.instance.gamingData.experience);
+            ChangeExperienceBarValue(UserData.Instance.gamingData.experience);
 
             // ExperienceEventCenter.AddListener(ExperienceEventType.UpdataExperience,ChangeExperienceBarValue);
             // ExperienceEventCenter.AddListener(ExperienceEventType.LeverUp,CallInstantiateSkill);

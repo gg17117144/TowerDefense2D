@@ -27,7 +27,7 @@ namespace TowerDefense.Script.UI.GamingCanvas
 
         private void ResetWeaponBagData()
         {
-            var bagWeaponDatas = UserData.instance.gamingData.bagWeaponData;
+            var bagWeaponDatas = UserData.Instance.gamingData.bagWeaponData;
             foreach (var bagWeaponData in bagWeaponDatas)
             {
                 foreach (var allWeaponSetting in allWeaponSettingSoList)
