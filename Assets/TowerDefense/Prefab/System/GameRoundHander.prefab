@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8566366966362674810}
   - component: {fileID: 2950674269452825006}
+  - component: {fileID: 8739628276530667416}
   m_Layer: 0
   m_Name: GameRoundHander
   m_TagString: Untagged
@@ -45,7 +46,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2eb85de0f115441babd8c67ca3a4b8ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newRoundTimeline01: {fileID: 6169683504800927742}
+  shipStart: {fileID: 6169683504800927742}
+--- !u!114 &8739628276530667416
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582581010623569957}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63e89e2c704742368b967d136fefdf89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  roundNum: 0
+  allGameRoundData: {fileID: 11400000, guid: 2dee887c3e45f924b8bdc22e2491aa7a, type: 2}
 --- !u!1001 &4673805770802730943
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -72,7 +87,7 @@ PrefabInstance:
       objectReference: {fileID: 8715179475620915716, guid: 85f4533bf4bdd4b469113141d56124c7, type: 2}
     - target: {fileID: 268309792042456388, guid: 45cb3930c7c70734dbd3a0bf14e7444a, type: 3}
       propertyPath: m_Name
-      value: StoryTimeline01
+      value: Ship_Start
       objectReference: {fileID: 0}
     - target: {fileID: 9169497505683590196, guid: 45cb3930c7c70734dbd3a0bf14e7444a, type: 3}
       propertyPath: m_LocalPosition.x
