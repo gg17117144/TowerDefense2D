@@ -8,5 +8,12 @@ namespace TowerDefense.Script.EventCenter.EventMediator
         {
             OnStartRound?.Invoke(roundValue);
         }
+        
+        public static event System.Action<bool> OnStartCreateEnemy;
+
+        public static void DoStartCreateEnemy(bool isCreate)
+        {
+            OnStartCreateEnemy?.Invoke(isCreate);
+        }
     }
 }
