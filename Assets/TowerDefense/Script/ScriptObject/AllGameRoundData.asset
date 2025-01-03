@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 114c54d64953498d89f81ac83501b3e9, type: 3}
+  m_Name: AllGameRoundData
+  m_EditorClassIdentifier: 
+  gameRoundDataList:
+  - roundNum: 0
+    enemyCount: 3
+    eliteEnemyCount: 0
+    shipCount: 1
+  - roundNum: 1
+    enemyCount: 10
+    eliteEnemyCount: 0
+    shipCount: 1
+  - roundNum: 2
+    enemyCount: 20
+    eliteEnemyCount: 0
+    shipCount: 2
+  - roundNum: 3
+    enemyCount: 10
+    eliteEnemyCount: 1
+    shipCount: 1
+  - roundNum: 4
+    enemyCount: 10
+    eliteEnemyCount: 5
+    shipCount: 2
