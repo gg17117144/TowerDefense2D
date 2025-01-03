@@ -11,15 +11,23 @@ namespace TowerDefense.Script.ScriptObject.Script
         public float damage;
         public int bounty;
         public int loot;
-
-        [SerializeField]
-        public enum EnemyTypes
-        {
-            Saber,
-            Archer
-        }
-
+        public EnemyAttackTypes enemyAttackTypes;
+        public EnemyTypes enemyTypes;
         [Header("物件")] public GameObject weapon;
         public GameObject enemyPrefab;
+    }
+    
+    [SerializeField]
+    public enum EnemyAttackTypes
+    {
+        Saber,
+        Archer
+    }
+        
+    [SerializeField]
+    public enum EnemyTypes
+    {
+        Normal,
+        Elite
     }
 }
