@@ -34,20 +34,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: 286f5c37eb1573c48a94b2796637f50c, type: 3}
     - time: 0.2
       value: {fileID: 21300000, guid: 755a7805f45d96f439268862540b6613, type: 3}
-    - time: 0.23333333
-      value: {fileID: 21300000, guid: a4756ad724ecb6d4c89a06cd0b867f6c, type: 3}
-    - time: 0.26666668
-      value: {fileID: 21300000, guid: 12d1859aeac43174ca5ee50f50f02d6d, type: 3}
-    - time: 0.3
-      value: {fileID: 21300000, guid: a8f0f700af95b21408327cc10ece73ed, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: c545fb477e0549449bdd59dfbbd9b834, type: 3}
-    - time: 0.36666667
-      value: {fileID: 21300000, guid: 008d80ca981da8448b3bf99b5d53af08, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: 9d69219a5a5c2b44780f5dc1736178af, type: 3}
-    - time: 0.43333334
-      value: {fileID: 21300000, guid: 7ee655cea1b792148a26eb14a57480d7, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -77,24 +63,17 @@ AnimationClip:
     - {fileID: 21300000, guid: 24fd11432c3f8094a8e9525c003eeac1, type: 3}
     - {fileID: 21300000, guid: 286f5c37eb1573c48a94b2796637f50c, type: 3}
     - {fileID: 21300000, guid: 755a7805f45d96f439268862540b6613, type: 3}
-    - {fileID: 21300000, guid: a4756ad724ecb6d4c89a06cd0b867f6c, type: 3}
-    - {fileID: 21300000, guid: 12d1859aeac43174ca5ee50f50f02d6d, type: 3}
-    - {fileID: 21300000, guid: a8f0f700af95b21408327cc10ece73ed, type: 3}
-    - {fileID: 21300000, guid: c545fb477e0549449bdd59dfbbd9b834, type: 3}
-    - {fileID: 21300000, guid: 008d80ca981da8448b3bf99b5d53af08, type: 3}
-    - {fileID: 21300000, guid: 9d69219a5a5c2b44780f5dc1736178af, type: 3}
-    - {fileID: 21300000, guid: 7ee655cea1b792148a26eb14a57480d7, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.46666667
+    m_StopTime: 0.23333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 0
+    m_LoopTime: 1
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
