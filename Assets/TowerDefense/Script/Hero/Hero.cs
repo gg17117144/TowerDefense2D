@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using NaughtyAttributes;
@@ -25,13 +26,18 @@ namespace TowerDefense.Script.Hero
             instance = this;
         }
 
-        private void Start()
+        private void OnEnable()
         {
             _animator = GetComponent<Animator>();
             _weaponPool = transform.Find("WeaponPool").transform;
             _shootTransform = transform.Find("shootTransform").transform;
 
             EnemyEventMediator.OnEnemyDead += RemoveEnemyList;
+        }
+
+        private void OnDisable()
+        {
+            EnemyEventMediator.OnEnemyDead -= RemoveEnemyList;
         }
 
         [Button]
