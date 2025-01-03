@@ -40,6 +40,12 @@ namespace TowerDefense.Script
                     nowGameRoundData.eliteEnemyCount--;
                     break;
             }
+
+            if (nowGameRoundData.enemyCount <= 0 && nowGameRoundData.eliteEnemyCount <= 0)
+            {
+                PlayNextRound();
+                Debug.Log("回合結束");
+            }
         }
 
         private void PrintRoundInfo(int roundNum)
