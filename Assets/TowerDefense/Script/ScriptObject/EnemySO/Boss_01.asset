@@ -21,4 +21,4 @@ MonoBehaviour:
   enemyAttackTypes: 0
   enemyTypes: 1
   weapon: {fileID: 2189996428755576316, guid: ee6c4c6331e3c5b4c9eeab520b2da120, type: 3}
-  enemyPrefab: {fileID: 508513267028415702, guid: 7b597ea95300533478219ebe86f0984b, type: 3}
+  enemyPrefab: {fileID: 1650731586029529713, guid: 89d495bdefbbeaf46b8b31e8a75820d4, type: 3}
