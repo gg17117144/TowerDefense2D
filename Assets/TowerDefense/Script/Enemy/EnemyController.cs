@@ -100,18 +100,20 @@ namespace TowerDefense.Script.Enemy
         {
             hp -= damageAmount;
             
-            if (enemySettingData.enemyTypes == EnemyTypes.Elite && hp <= enemySettingData.hp / 2)
+            if (enemySettingData.enemyTypes == EnemyTypes.Elite && hp <= 0)
             {
                 // TODO 先暫時使用這樣的方式 BOSS應該另外拉出來去繼承這個腳本較好
                 Debug.Log("破甲");
                 EnemyEventMediator.DoEliteEnemyPhase2(transform);
                 Dead();
+                hp = 200;
                 return;
             }
             
             if (hp <= 0)
             {
                 Dead();
+                hp = 200;
             }
             else
             {
@@ -200,7 +202,8 @@ namespace TowerDefense.Script.Enemy
 
         private void DamageEffect()
         {
-            StartCoroutine(nameof(StartDamageEffect));
+            if (gameObject.activeInHierarchy)
+                StartCoroutine(nameof(StartDamageEffect));
         }
 
         IEnumerator StartDamageEffect()
