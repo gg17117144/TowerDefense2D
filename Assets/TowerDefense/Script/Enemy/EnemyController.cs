@@ -99,6 +99,16 @@ namespace TowerDefense.Script.Enemy
         private void DamageTaken(int damageAmount)
         {
             hp -= damageAmount;
+            
+            if (enemySettingData.enemyTypes == EnemyTypes.Elite && hp <= enemySettingData.hp / 2)
+            {
+                // TODO 先暫時使用這樣的方式 BOSS應該另外拉出來去繼承這個腳本較好
+                Debug.Log("破甲");
+                EnemyEventMediator.DoEliteEnemyPhase2(transform);
+                Dead();
+                return;
+            }
+            
             if (hp <= 0)
             {
                 Dead();
@@ -132,6 +142,8 @@ namespace TowerDefense.Script.Enemy
         /// </summary>
         private void DamageSound()
         {
+            if (audioSource.enabled)
+                return;
             audioSource.clip = hurtSound;
             audioSource.Play();
         }
@@ -141,6 +153,11 @@ namespace TowerDefense.Script.Enemy
         /// </summary>
         private void DamageAnimation()
         {
+            if (!_animator.enabled || !_animator.gameObject.activeInHierarchy)
+            {
+                // Debug.LogWarning("Animator is not active or enabled");
+                return;
+            }
             _animator.Play("Dead");
         }
 
