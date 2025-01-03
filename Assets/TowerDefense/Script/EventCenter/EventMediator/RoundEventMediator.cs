@@ -1,19 +1,22 @@
+using System;
+using TowerDefense.Script.ScriptObject.Script;
+
 namespace TowerDefense.Script.EventCenter.EventMediator
 {
     public static class RoundEventMediator
     {
-        public static event System.Action<int> OnStartRound;
+        public static event Action<GameRoundData> OnStartRound;
 
-        public static void DoStartRound(int roundValue)
+        public static void DoStartRound(GameRoundData gameRoundData)
         {
-            OnStartRound?.Invoke(roundValue);
+            OnStartRound?.Invoke(gameRoundData);
         }
-        
-        public static event System.Action<bool> OnStartCreateEnemy;
 
-        public static void DoStartCreateEnemy(bool isCreate)
+        public static event Action<GameRoundData> OnStartCreateEnemy;
+
+        public static void DoStartCreateEnemy(GameRoundData gameRoundData)
         {
-            OnStartCreateEnemy?.Invoke(isCreate);
+            OnStartCreateEnemy?.Invoke(gameRoundData);
         }
     }
 }
